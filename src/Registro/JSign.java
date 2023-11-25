@@ -13,8 +13,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import javax.swing.JPasswordField;
+import ToolsMethods.Ventana;
+import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class JSign {
+public class JSign implements Ventana {
 
 	private JFrame frmSignUp;
 	private JTextField textField;
@@ -87,6 +91,14 @@ public class JSign {
 		panel.add(lblServiceWithUs_1);
 		
 		JButton btnSignIn = new JButton("Sign In");
+		btnSignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JLogin SignIn = new JLogin();
+				SignIn.ShowVentana();
+				frmSignUp.dispose();
+			}
+		});
+		btnSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnSignIn.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnSignIn.setForeground(new Color(255, 255, 255));
 		btnSignIn.setFocusable(false);
@@ -151,6 +163,7 @@ public class JSign {
 		panel_1_1_1.add(passwordField);
 		
 		JButton btnNewButton_1 = new JButton("Sign Up");
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_1.setFocusable(false);
@@ -161,5 +174,11 @@ public class JSign {
 		btnNewButton_1.setBackground(new Color(0, 180, 216));
 		btnNewButton_1.setBounds(312, 280, 204, 44);
 		frmSignUp.getContentPane().add(btnNewButton_1);
+	}
+
+	@Override
+	public void ShowVentana() {
+		// TODO Auto-generated method stub
+		frmSignUp.setVisible(true);
 	}
 }

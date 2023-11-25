@@ -1,7 +1,7 @@
 package Registro;
 
 import java.awt.EventQueue;
-
+import ToolsMethods.Ventana;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -17,8 +17,11 @@ import javax.swing.JCheckBox;
 import javax.swing.DebugGraphics;
 import java.awt.Cursor;
 import javax.swing.border.LineBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class JLogin {
+
+public class JLogin implements Ventana{
 
 	private JFrame frmSignIn;
 	private JTextField txtLogin;
@@ -96,6 +99,13 @@ public class JLogin {
 		panel.add(lblServiceWithUs);
 		
 		JButton btnNewButton = new JButton("Sign Up");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JSign SignUp = new JSign();
+				SignUp.ShowVentana();
+				frmSignIn.dispose();
+			}
+		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setBackground(new Color(3, 4, 94));
@@ -171,4 +181,12 @@ public class JLogin {
 		frmSignIn.getContentPane().add(chckbxNewCheckBox);
 		frmSignIn.setLocationRelativeTo(null);
 	}
+
+	@Override
+	public void ShowVentana() {
+		// TODO Auto-generated method stub
+		frmSignIn.setVisible(true);
+	}
+	
+	
 }
