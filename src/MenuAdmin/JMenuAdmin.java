@@ -54,13 +54,14 @@ public class JMenuAdmin {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		
+		frame = new JFrame();	
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 700, 491);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+	
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(10, 59, 129));
 		panel.setBounds(0, 0, 203, 452);
@@ -231,6 +232,7 @@ public class JMenuAdmin {
 				BtnConfig.setBackground(new Color(18, 88, 167));
 			}
 		});
+<<<<<<< HEAD
 		BtnConfig.setFocusPainted(false);
 		BtnConfig.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnConfig.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -251,6 +253,20 @@ public class JMenuAdmin {
 		frame.remove(p);
 		frame.remove(rg);
 		frame.remove(co);
+=======
+		btnNewButton_1_1_2.setFocusPainted(false);
+		btnNewButton_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton_1_1_2.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnNewButton_1_1_2.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		btnNewButton_1_1_2.setForeground(new Color(255, 255, 255));
+		btnNewButton_1_1_2.setBackground(new Color(18, 88, 167));
+		btnNewButton_1_1_2.setBorder(null);
+		btnNewButton_1_1_2.setFocusable(false);
+		btnNewButton_1_1_2.setFocusTraversalKeysEnabled(false);
+		btnNewButton_1_1_2.setBounds(0, 393, 203, 59);
+		panel.add(btnNewButton_1_1_2);
+		
+>>>>>>> eaf237251ef15e82ef1584eb371f2e27c410c985
 		
 	}
 }
