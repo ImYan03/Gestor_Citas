@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 
 public class JSign {
 
-	private JFrame frame;
+	private JFrame frmSignUp;
 	private JTextField textField;
 	private JTextField txtEmail;
 	private JPasswordField passwordField;
@@ -29,7 +29,7 @@ public class JSign {
 			public void run() {
 				try {
 					JSign window = new JSign();
-					window.frame.setVisible(true);
+					window.frmSignUp.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,19 +48,20 @@ public class JSign {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.getContentPane().setLocation(-287, -105);
-		frame.getContentPane().setBackground(new Color(255, 255, 255));
-		frame.setBounds(100, 100, 622, 404);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setLocationRelativeTo(null);
+		frmSignUp = new JFrame();
+		frmSignUp.setTitle("Sign Up");
+		frmSignUp.setResizable(false);
+		frmSignUp.getContentPane().setLocation(-287, -105);
+		frmSignUp.getContentPane().setBackground(new Color(255, 255, 255));
+		frmSignUp.setBounds(100, 100, 622, 404);
+		frmSignUp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSignUp.getContentPane().setLayout(null);
+		frmSignUp.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 180, 216));
 		panel.setBounds(0, 0, 212, 365);
-		frame.getContentPane().add(panel);
+		frmSignUp.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblWelcomeBack = new JLabel("Welcome Back!");
@@ -105,13 +106,13 @@ public class JSign {
 		JLabel lblCreateAccount = new JLabel("Create Account\r\n");
 		lblCreateAccount.setFont(new Font("Source Sans Pro SemiBold", Font.BOLD, 30));
 		lblCreateAccount.setBounds(298, 23, 242, 65);
-		frame.getContentPane().add(lblCreateAccount);
+		frmSignUp.getContentPane().add(lblCreateAccount);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(new Color(3, 4, 94));
 		panel_1.setBounds(287, 96, 253, 44);
-		frame.getContentPane().add(panel_1);
+		frmSignUp.getContentPane().add(panel_1);
 		
 		textField = new JTextField();
 		textField.setText("Username");
@@ -126,7 +127,7 @@ public class JSign {
 		panel_1_1.setLayout(null);
 		panel_1_1.setBackground(new Color(3, 4, 94));
 		panel_1_1.setBounds(287, 151, 253, 44);
-		frame.getContentPane().add(panel_1_1);
+		frmSignUp.getContentPane().add(panel_1_1);
 		
 		txtEmail = new JTextField();
 		txtEmail.setText("Email");
@@ -141,7 +142,7 @@ public class JSign {
 		panel_1_1_1.setLayout(null);
 		panel_1_1_1.setBackground(new Color(3, 4, 94));
 		panel_1_1_1.setBounds(287, 206, 253, 45);
-		frame.getContentPane().add(panel_1_1_1);
+		frmSignUp.getContentPane().add(panel_1_1_1);
 		
 		passwordField = new JPasswordField();
 		passwordField.setText("asdadasd");
@@ -159,6 +160,6 @@ public class JSign {
 		btnNewButton_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		btnNewButton_1.setBackground(new Color(0, 180, 216));
 		btnNewButton_1.setBounds(312, 280, 204, 44);
-		frame.getContentPane().add(btnNewButton_1);
+		frmSignUp.getContentPane().add(btnNewButton_1);
 	}
 }
