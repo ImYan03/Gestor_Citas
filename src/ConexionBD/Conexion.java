@@ -13,9 +13,9 @@ public class Conexion {
 	public static Connection EstablecerConexion() {
 		
 		String url = "jdbc:sqlserver://localhost:1433;"
-				+ "database= NOMBREBASEDEDATOS;"
-				+ "user= NOMBRE USUARIO;"
-				+ "password= CONTRASEÑA;"
+				+ "database=USUARIOS;"
+				+ "user=JeanPC;"
+				+ "password=conexion123;"
 				+ "loginTimeout=1;"
 				+ "encrypt=true;trustServerCertificate=true;";
 		

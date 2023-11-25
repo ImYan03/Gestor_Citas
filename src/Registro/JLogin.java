@@ -19,6 +19,7 @@ import java.awt.Cursor;
 import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 
 public class JLogin implements Ventana{
@@ -146,6 +147,11 @@ public class JLogin implements Ventana{
 		frmSignIn.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(225, 5, 24, 34);
+		panel_1.add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\profile.png"));
+		
 		txtLogin = new JTextField();
 		txtLogin.setHorizontalAlignment(SwingConstants.LEFT);
 		txtLogin.setMargin(new Insets(2, 6, 2, 2));
@@ -160,6 +166,11 @@ public class JLogin implements Ventana{
 		panel_1_1.setBounds(71, 163, 253, 45);
 		frmSignIn.getContentPane().add(panel_1_1);
 		panel_1_1.setLayout(null);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\padlock1.png"));
+		lblNewLabel_1_1.setBounds(226, 9, 24, 29);
+		panel_1_1.add(lblNewLabel_1_1);
 		
 		pwdAsdadasd = new JPasswordField();
 		pwdAsdadasd.setText("asdadasd");
@@ -187,6 +198,4 @@ public class JLogin implements Ventana{
 		// TODO Auto-generated method stub
 		frmSignIn.setVisible(true);
 	}
-	
-	
 }

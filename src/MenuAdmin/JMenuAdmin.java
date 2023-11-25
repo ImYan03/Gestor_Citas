@@ -13,11 +13,20 @@ import javax.swing.JLabel;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JMenuAdmin {
 
 	private JFrame frame;
-
+	JPanel PanelDespliegue;
+	
+	Home h = new Home();
+	Citas c = new Citas();
+	Pacientes p = new Pacientes();
+	RegistrarCitas rg = new RegistrarCitas();
+	Config co = new Config();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -74,120 +83,174 @@ public class JMenuAdmin {
 		separator.setBounds(20, 60, 162, 3);
 		panel.add(separator);
 		
-		JButton btnNewButton = new JButton("                Principal\r\n");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton BtnPrincipal = new JButton("                Principal\r\n");
+		BtnPrincipal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarVentanas();
+				h.setBounds(203, 0, 481, 452);
+				frame.getContentPane().add(h);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		BtnPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton.setBackground(new Color(11, 58, 111));
+				BtnPrincipal.setBackground(new Color(11, 58, 111));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton.setBackground(new Color(18, 88, 167));
+				BtnPrincipal.setBackground(new Color(18, 88, 167));
 			}
 		});
-		btnNewButton.setFocusPainted(false);
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(18, 88, 167));
-		btnNewButton.setBorder(null);
-		btnNewButton.setFocusable(false);
-		btnNewButton.setFocusTraversalKeysEnabled(false);
-		btnNewButton.setBounds(0, 88, 203, 59);
-		panel.add(btnNewButton);
+		BtnPrincipal.setFocusPainted(false);
+		BtnPrincipal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnPrincipal.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		BtnPrincipal.setHorizontalAlignment(SwingConstants.LEADING);
+		BtnPrincipal.setForeground(new Color(255, 255, 255));
+		BtnPrincipal.setBackground(new Color(18, 88, 167));
+		BtnPrincipal.setBorder(null);
+		BtnPrincipal.setFocusable(false);
+		BtnPrincipal.setFocusTraversalKeysEnabled(false);
+		BtnPrincipal.setBounds(0, 88, 203, 59);
+		panel.add(BtnPrincipal);
 		
-		JButton btnNewButton_1 = new JButton("                Citas\r\n");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton BtnCitas = new JButton("                Citas\r\n");
+		BtnCitas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarVentanas();
+				c.setBounds(203, 0, 481, 452);
+				frame.getContentPane().add(c);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		BtnCitas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton_1.setBackground(new Color(11, 58, 111));
+				BtnCitas.setBackground(new Color(11, 58, 111));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton_1.setBackground(new Color(18, 88, 167));
+				BtnCitas.setBackground(new Color(18, 88, 167));
 			}
 		});
-		btnNewButton_1.setFocusPainted(false);
-		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(18, 88, 167));
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setFocusable(false);
-		btnNewButton_1.setFocusTraversalKeysEnabled(false);
-		btnNewButton_1.setBounds(0, 142, 203, 59);
-		panel.add(btnNewButton_1);
+		BtnCitas.setFocusPainted(false);
+		BtnCitas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnCitas.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		BtnCitas.setHorizontalAlignment(SwingConstants.LEADING);
+		BtnCitas.setForeground(new Color(255, 255, 255));
+		BtnCitas.setBackground(new Color(18, 88, 167));
+		BtnCitas.setBorder(null);
+		BtnCitas.setFocusable(false);
+		BtnCitas.setFocusTraversalKeysEnabled(false);
+		BtnCitas.setBounds(0, 142, 203, 59);
+		panel.add(BtnCitas);
 		
-		JButton btnNewButton_1_1 = new JButton("                Registro de Pacientes\r\n");
-		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+		JButton BtnPacientes = new JButton("                Registro de Pacientes\r\n");
+		BtnPacientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarVentanas();
+				p.setBounds(203, 0, 481, 452);
+				frame.getContentPane().add(p);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		BtnPacientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton_1_1.setBackground(new Color(11, 58, 111));
+				BtnPacientes.setBackground(new Color(11, 58, 111));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton_1_1.setBackground(new Color(18, 88, 167));
+				BtnPacientes.setBackground(new Color(18, 88, 167));
 			}
 		});
-		btnNewButton_1_1.setFocusPainted(false);
-		btnNewButton_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton_1_1.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton_1_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1_1.setBackground(new Color(18, 88, 167));
-		btnNewButton_1_1.setBorder(null);
-		btnNewButton_1_1.setFocusable(false);
-		btnNewButton_1_1.setFocusTraversalKeysEnabled(false);
-		btnNewButton_1_1.setBounds(0, 197, 203, 59);
-		panel.add(btnNewButton_1_1);
+		BtnPacientes.setFocusPainted(false);
+		BtnPacientes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnPacientes.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		BtnPacientes.setHorizontalAlignment(SwingConstants.LEADING);
+		BtnPacientes.setForeground(new Color(255, 255, 255));
+		BtnPacientes.setBackground(new Color(18, 88, 167));
+		BtnPacientes.setBorder(null);
+		BtnPacientes.setFocusable(false);
+		BtnPacientes.setFocusTraversalKeysEnabled(false);
+		BtnPacientes.setBounds(0, 197, 203, 59);
+		panel.add(BtnPacientes);
 		
-		JButton btnNewButton_1_1_1 = new JButton("                Registro de Citas");
-		btnNewButton_1_1_1.addMouseListener(new MouseAdapter() {
+		JButton BtnRegistro = new JButton("                Registro de Citas");
+		BtnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarVentanas();
+				rg.setBounds(203, 0, 481, 452);
+				frame.getContentPane().add(rg);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		BtnRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton_1_1_1.setBackground(new Color(11, 58, 111));
+				BtnRegistro.setBackground(new Color(11, 58, 111));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton_1_1_1.setBackground(new Color(18, 88, 167));
+				BtnRegistro.setBackground(new Color(18, 88, 167));
 			}
 		});
-		btnNewButton_1_1_1.setFocusPainted(false);
-		btnNewButton_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1_1.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton_1_1_1.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton_1_1_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1_1_1.setBackground(new Color(18, 88, 167));
-		btnNewButton_1_1_1.setBorder(null);
-		btnNewButton_1_1_1.setFocusable(false);
-		btnNewButton_1_1_1.setFocusTraversalKeysEnabled(false);
-		btnNewButton_1_1_1.setBounds(0, 253, 203, 59);
-		panel.add(btnNewButton_1_1_1);
+		BtnRegistro.setFocusPainted(false);
+		BtnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnRegistro.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		BtnRegistro.setHorizontalAlignment(SwingConstants.LEADING);
+		BtnRegistro.setForeground(new Color(255, 255, 255));
+		BtnRegistro.setBackground(new Color(18, 88, 167));
+		BtnRegistro.setBorder(null);
+		BtnRegistro.setFocusable(false);
+		BtnRegistro.setFocusTraversalKeysEnabled(false);
+		BtnRegistro.setBounds(0, 253, 203, 59);
+		panel.add(BtnRegistro);
 		
-		JButton btnNewButton_1_1_2 = new JButton("Configuracion");
-		btnNewButton_1_1_2.addMouseListener(new MouseAdapter() {
+		JButton BtnConfig = new JButton("Configuracion");
+		BtnConfig.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarVentanas();
+				co.setBounds(203, 0, 481, 452);
+				frame.getContentPane().add(co);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		BtnConfig.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton_1_1_2.setBackground(new Color(11, 58, 111));
+				BtnConfig.setBackground(new Color(11, 58, 111));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton_1_1_2.setBackground(new Color(18, 88, 167));
+				BtnConfig.setBackground(new Color(18, 88, 167));
 			}
 		});
-		btnNewButton_1_1_2.setFocusPainted(false);
-		btnNewButton_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1_2.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnNewButton_1_1_2.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton_1_1_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_1_1_2.setBackground(new Color(18, 88, 167));
-		btnNewButton_1_1_2.setBorder(null);
-		btnNewButton_1_1_2.setFocusable(false);
-		btnNewButton_1_1_2.setFocusTraversalKeysEnabled(false);
-		btnNewButton_1_1_2.setBounds(0, 393, 203, 59);
-		panel.add(btnNewButton_1_1_2);
+		BtnConfig.setFocusPainted(false);
+		BtnConfig.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnConfig.setHorizontalTextPosition(SwingConstants.CENTER);
+		BtnConfig.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		BtnConfig.setForeground(new Color(255, 255, 255));
+		BtnConfig.setBackground(new Color(18, 88, 167));
+		BtnConfig.setBorder(null);
+		BtnConfig.setFocusable(false);
+		BtnConfig.setFocusTraversalKeysEnabled(false);
+		BtnConfig.setBounds(0, 393, 203, 59);
+		panel.add(BtnConfig);
+			
 	}
-
+	
+	public void EliminarVentanas() {
+		frame.remove(h);
+		frame.remove(c);
+		frame.remove(p);
+		frame.remove(rg);
+		frame.remove(co);
+		
+	}
 }
