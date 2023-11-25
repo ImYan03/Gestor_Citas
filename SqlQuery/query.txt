@@ -1,0 +1,25 @@
+CREATE DATABASE Odontodom;
+GO
+
+USE Odontodom;
+GO
+
+
+CREATE TABLE Usuario (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) NOT NULL,
+   
+);
+GO
+
+CREATE TABLE Citas (
+    CitaID INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioID INT FOREIGN KEY REFERENCES Usuario(UserID),
+    FechaCita DATETIME NOT NULL,
+    Descripcion VARCHAR(255),
+
+);
+GO
+
