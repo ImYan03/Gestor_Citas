@@ -94,6 +94,7 @@ public class JMenuAdmin {
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\home.png"));
 		lblNewLabel.setBounds(17, 102, 24, 30);
 		panel.add(lblNewLabel);
@@ -115,6 +116,7 @@ public class JMenuAdmin {
 		panel.add(separator);
 		
 		JButton BtnPrincipal = new JButton("                Home\r\n\r\n");
+		BtnPrincipal.setOpaque(false);
 		BtnPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -147,6 +149,7 @@ public class JMenuAdmin {
 		panel.add(BtnPrincipal);
 		
 		JButton BtnCitas = new JButton("                Appointment\r\n");
+		BtnCitas.setOpaque(false);
 		BtnCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -179,6 +182,7 @@ public class JMenuAdmin {
 		panel.add(BtnCitas);
 		
 		JButton BtnPacientes = new JButton("                Patient registration\r\n");
+		BtnPacientes.setOpaque(false);
 		BtnPacientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -211,6 +215,7 @@ public class JMenuAdmin {
 		panel.add(BtnPacientes);
 		
 		JButton BtnRegistro = new JButton("                Registration appointment");
+		BtnRegistro.setOpaque(false);
 		BtnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -243,6 +248,7 @@ public class JMenuAdmin {
 		panel.add(BtnRegistro);
 		
 		JButton BtnConfig = new JButton("Settings\r\n");
+		BtnConfig.setOpaque(false);
 		BtnConfig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
