@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class JMenuAdmin {
 
@@ -54,19 +55,48 @@ public class JMenuAdmin {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
-		frame = new JFrame();	
+		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 700, 491);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-	
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(10, 59, 129));
 		panel.setBounds(0, 0, 203, 452);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1_2_1_1 = new JLabel("");
+		lblNewLabel_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\setting.png"));
+		lblNewLabel_1_2_1_1.setBounds(133, 408, 24, 30);
+		panel.add(lblNewLabel_1_2_1_1);
+		
+		JLabel lblNewLabel_1_2_1 = new JLabel("");
+		lblNewLabel_1_2_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\setting.png"));
+		lblNewLabel_1_2_1.setBounds(46, 408, 24, 30);
+		panel.add(lblNewLabel_1_2_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\patient.png"));
+		lblNewLabel_1_1.setBounds(17, 212, 24, 30);
+		panel.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("");
+		lblNewLabel_1_2.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\edit.png"));
+		lblNewLabel_1_2.setBounds(17, 267, 24, 30);
+		panel.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\calendar.png"));
+		lblNewLabel_1.setBounds(18, 156, 24, 30);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\home.png"));
+		lblNewLabel.setBounds(17, 102, 24, 30);
+		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(10, 59, 129));
@@ -84,7 +114,7 @@ public class JMenuAdmin {
 		separator.setBounds(20, 60, 162, 3);
 		panel.add(separator);
 		
-		JButton BtnPrincipal = new JButton("                Principal\r\n");
+		JButton BtnPrincipal = new JButton("                Home\r\n\r\n");
 		BtnPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -116,7 +146,7 @@ public class JMenuAdmin {
 		BtnPrincipal.setBounds(0, 88, 203, 59);
 		panel.add(BtnPrincipal);
 		
-		JButton BtnCitas = new JButton("                Citas\r\n");
+		JButton BtnCitas = new JButton("                Appointment\r\n");
 		BtnCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -148,7 +178,7 @@ public class JMenuAdmin {
 		BtnCitas.setBounds(0, 142, 203, 59);
 		panel.add(BtnCitas);
 		
-		JButton BtnPacientes = new JButton("                Registro de Pacientes\r\n");
+		JButton BtnPacientes = new JButton("                Patient registration\r\n");
 		BtnPacientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -180,7 +210,7 @@ public class JMenuAdmin {
 		BtnPacientes.setBounds(0, 197, 203, 59);
 		panel.add(BtnPacientes);
 		
-		JButton BtnRegistro = new JButton("                Registro de Citas");
+		JButton BtnRegistro = new JButton("                Registration appointment");
 		BtnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -212,7 +242,7 @@ public class JMenuAdmin {
 		BtnRegistro.setBounds(0, 253, 203, 59);
 		panel.add(BtnRegistro);
 		
-		JButton BtnConfig = new JButton("Configuracion");
+		JButton BtnConfig = new JButton("Settings\r\n");
 		BtnConfig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EliminarVentanas();
@@ -232,7 +262,6 @@ public class JMenuAdmin {
 				BtnConfig.setBackground(new Color(18, 88, 167));
 			}
 		});
-<<<<<<< HEAD
 		BtnConfig.setFocusPainted(false);
 		BtnConfig.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnConfig.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -253,20 +282,6 @@ public class JMenuAdmin {
 		frame.remove(p);
 		frame.remove(rg);
 		frame.remove(co);
-=======
-		btnNewButton_1_1_2.setFocusPainted(false);
-		btnNewButton_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1_2.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnNewButton_1_1_2.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnNewButton_1_1_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_1_1_2.setBackground(new Color(18, 88, 167));
-		btnNewButton_1_1_2.setBorder(null);
-		btnNewButton_1_1_2.setFocusable(false);
-		btnNewButton_1_1_2.setFocusTraversalKeysEnabled(false);
-		btnNewButton_1_1_2.setBounds(0, 393, 203, 59);
-		panel.add(btnNewButton_1_1_2);
-		
->>>>>>> eaf237251ef15e82ef1584eb371f2e27c410c985
 		
 	}
 }
