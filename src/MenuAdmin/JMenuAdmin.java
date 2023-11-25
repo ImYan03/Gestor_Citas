@@ -45,13 +45,14 @@ public class JMenuAdmin {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		
+		frame = new JFrame();	
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 700, 491);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+	
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(10, 59, 129));
 		panel.setBounds(0, 0, 203, 452);
@@ -188,6 +189,8 @@ public class JMenuAdmin {
 		btnNewButton_1_1_2.setFocusTraversalKeysEnabled(false);
 		btnNewButton_1_1_2.setBounds(0, 393, 203, 59);
 		panel.add(btnNewButton_1_1_2);
+		
+		
 	}
 
 }
