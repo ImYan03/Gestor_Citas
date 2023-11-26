@@ -1,7 +1,7 @@
 package MenuAdmin;
 
 import java.awt.EventQueue;
-
+import ToolsMethods.Ventana;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class JMenuAdmin {
+public class JMenuAdmin implements Ventana {
 
 	private JFrame frame;
 	JPanel PanelDespliegue;
@@ -289,5 +289,11 @@ public class JMenuAdmin {
 		frame.remove(rg);
 		frame.remove(co);
 		
+	}
+
+	@Override
+	public void ShowVentana() {
+		// TODO Auto-generated method stub
+		frame.setVisible(true);
 	}
 }
