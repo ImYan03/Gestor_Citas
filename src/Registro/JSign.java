@@ -18,6 +18,8 @@ import javax.swing.JPasswordField;
 import ToolsMethods.Ventana;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
@@ -228,23 +230,42 @@ public class JSign implements Ventana {
 				Usuarios User = new Usuarios(Usertxt.getText(), txtEmail.getText(), p);
 				
 				try {
+					String query= "SELECT * FROM usuario WHERE Username ='" + User.getNombre() + "' and Email = '"+User.getCorreo()+"'";
 					Statement sql = Conexion.EstablecerConexion().createStatement();
-					String query = "INSERT INTO Usuario(Username, Passwords, Email, TipoCuenta) VALUES ("
-							+ "'"+User.getNombre()+"',"
-							+ "'"+User.getContraseña()+"',"
-							+ "'"+User.getCorreo()+"',"
-							+"'Usuario'"
-							+ ");";
-					sql.executeUpdate(query);
-					sql.close();
-					Conexion.EstablecerConexion().close();
-					SignIn.ShowVentana();
-					frmSignUp.dispose();
+					ResultSet resultado = sql.executeQuery(query);
+					
+					if(resultado.next()) {
+						String mensaje = "Ya esta registrada una cuenta con estos datos";
+						JOptionPane.showMessageDialog(null, mensaje);
+						
+					}else {
+						
+						try {
+							Statement sql2 = Conexion.EstablecerConexion().createStatement();
+							String query2 = "INSERT INTO Usuario(Username, Passwords, Email, TipoCuenta) VALUES ("
+									+ "'"+User.getNombre()+"',"
+									+ "'"+User.getContraseña()+"',"
+									+ "'"+User.getCorreo()+"',"
+									+"'Usuario'"
+									+ ");";
+							sql2.executeUpdate(query2);
+							sql2.close();
+							Conexion.EstablecerConexion().close();
+							SignIn.ShowVentana();
+							frmSignUp.dispose();
+							
+						}catch(SQLException ex) {
+							JOptionPane.showMessageDialog(null, ex.toString());
+						}
+					
+					}
 					
 				}catch(SQLException ex) {
 					JOptionPane.showMessageDialog(null, ex.toString());
 				}
 				
+				
+					
 			}
 		});
 		btnNewButton_1.setForeground(Color.WHITE);
@@ -263,5 +284,11 @@ public class JSign implements Ventana {
 	public void ShowVentana() {
 		// TODO Auto-generated method stub
 		frmSignUp.setVisible(true);
+	}
+	
+	public void VerificarUsuario() {
+		
+		
+		
 	}
 }
