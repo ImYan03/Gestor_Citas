@@ -13,7 +13,7 @@ public class Conexion {
 	public static Connection EstablecerConexion() {
 		
 		String url = "jdbc:sqlserver://localhost:1433;"
-				+ "database=USUARIOS;"
+				+ "database=Odontodom;"
 				+ "user=JeanPC;"
 				+ "password=conexion123;"
 				+ "loginTimeout=1;"

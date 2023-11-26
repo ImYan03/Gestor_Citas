@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -16,14 +18,18 @@ import javax.swing.JPasswordField;
 import ToolsMethods.Ventana;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import ConexionBD.Conexion;
 
 public class JSign implements Ventana {
 
 	private JFrame frmSignUp;
-	private JTextField textField;
+	private JTextField Usertxt;
 	private JTextField txtEmail;
-	private JPasswordField passwordField;
+	private JPasswordField psUser;
+	JLogin SignIn = new JLogin();
 
 	/**
 	 * Launch the application.
@@ -93,7 +99,7 @@ public class JSign implements Ventana {
 		JButton btnSignIn = new JButton("Sign In");
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JLogin SignIn = new JLogin();
+				
 				SignIn.ShowVentana();
 				frmSignUp.dispose();
 			}
@@ -126,14 +132,14 @@ public class JSign implements Ventana {
 		panel_1.setBounds(287, 96, 253, 44);
 		frmSignUp.getContentPane().add(panel_1);
 		
-		textField = new JTextField();
-		textField.setText("Username");
-		textField.setMargin(new Insets(2, 6, 2, 2));
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setColumns(10);
-		textField.setBorder(null);
-		textField.setBounds(0, 0, 255, 43);
-		panel_1.add(textField);
+		Usertxt = new JTextField();
+		Usertxt.setText("Username");
+		Usertxt.setMargin(new Insets(2, 6, 2, 2));
+		Usertxt.setHorizontalAlignment(SwingConstants.LEFT);
+		Usertxt.setColumns(10);
+		Usertxt.setBorder(null);
+		Usertxt.setBounds(0, 0, 255, 43);
+		panel_1.add(Usertxt);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setLayout(null);
@@ -156,13 +162,39 @@ public class JSign implements Ventana {
 		panel_1_1_1.setBounds(287, 206, 253, 45);
 		frmSignUp.getContentPane().add(panel_1_1_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setText("asdadasd");
-		passwordField.setBorder(null);
-		passwordField.setBounds(0, 0, 253, 44);
-		panel_1_1_1.add(passwordField);
+		psUser = new JPasswordField();
+		psUser.setText("asdadasd");
+		psUser.setBorder(null);
+		psUser.setBounds(0, 0, 253, 44);
+		panel_1_1_1.add(psUser);
 		
 		JButton btnNewButton_1 = new JButton("Sign Up");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String p = new String(psUser.getPassword());
+				Usuarios User = new Usuarios(Usertxt.getText(), txtEmail.getText(), p);
+				
+				try {
+					Statement sql = Conexion.EstablecerConexion().createStatement();
+					String query = "INSERT INTO Usuario(Username, Passwords, Email, TipoCuenta) VALUES ("
+							+ "'"+User.getNombre()+"',"
+							+ "'"+User.getContraseña()+"',"
+							+ "'"+User.getCorreo()+"',"
+							+"'Usuario'"
+							+ ");";
+					sql.executeUpdate(query);
+					sql.close();
+					Conexion.EstablecerConexion().close();
+					SignIn.ShowVentana();
+					frmSignUp.dispose();
+					
+				}catch(SQLException ex) {
+					JOptionPane.showMessageDialog(null, ex.toString());
+				}
+				
+			}
+		});
 		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
