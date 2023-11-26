@@ -18,7 +18,6 @@ import javax.swing.JPasswordField;
 import ToolsMethods.Ventana;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -228,7 +227,6 @@ public class JSign implements Ventana {
 			public void actionPerformed(ActionEvent e) {
 				String p = new String(psUser.getPassword());
 				Usuarios User = new Usuarios(Usertxt.getText(), txtEmail.getText(), p);
-				
 				try {
 					String query= "SELECT * FROM usuario WHERE Username ='" + User.getNombre() + "' and Email = '"+User.getCorreo()+"'";
 					Statement sql = Conexion.EstablecerConexion().createStatement();
