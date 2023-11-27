@@ -296,4 +296,10 @@ public class JMenuAdmin implements Ventana {
 		// TODO Auto-generated method stub
 		frame.setVisible(true);
 	}
+	
+	public JFrame getframe() {
+		return frame;
+	}
+	
+	
 }

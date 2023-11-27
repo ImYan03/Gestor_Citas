@@ -12,9 +12,12 @@ public class Tools {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void MostrarTablaPacientes(DefaultTableModel modelo) {
+	public DefaultTableModel MostrarTablaPacientes() {
+			
+		DefaultTableModel modelo = new DefaultTableModel();
 			try {
-				String consulta = "Select * From Pacientes";
+				
+				String consulta = "select * from Pacientes";
 				Statement sql = Conexion.EstablecerConexion().createStatement();
 				ResultSet tabla = sql.executeQuery(consulta);
 				int columnas = tabla.getMetaData().getColumnCount();
@@ -34,6 +37,8 @@ public class Tools {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			return modelo;
 		}
 	
 	public void MostrarTablaUsuarios(DefaultTableModel modelo) {
