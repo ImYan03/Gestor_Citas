@@ -93,6 +93,19 @@ public class Tools {
 		 }
 	}
 	
+	public void EliminarDatosPacientes(int id) {
+		try {
+			String consulta = "DELETE FROM Pacientes Where PacienteID = " + id + ";";
+			Statement sql = Conexion.EstablecerConexion().createStatement();
+			sql.executeUpdate(consulta);
+			
+			sql.close();
+			Conexion.EstablecerConexion().close();
+			
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+	}
 	
 	
 }

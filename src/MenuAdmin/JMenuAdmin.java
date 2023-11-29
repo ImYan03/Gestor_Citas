@@ -301,7 +301,7 @@ public class JMenuAdmin implements Ventana {
 		p.setBounds(203, 0, 481, 452);
 		contenedor.add(p, BorderLayout.CENTER);
 		contenedor.revalidate();
-		contenedor.repaint();
+		contenedor.repaint(); 	
 	}
 	
 	public void ShowHome() {
