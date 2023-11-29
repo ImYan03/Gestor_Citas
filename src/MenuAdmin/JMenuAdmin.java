@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -19,14 +21,16 @@ import javax.swing.ImageIcon;
 
 public class JMenuAdmin implements Ventana {
 
+	private static JMenuAdmin instanciaUnica = null;
+	
 	private JFrame frame;
 	JPanel PanelDespliegue;
+	JPanel contenedor;
 	
-	Home h = new Home();
-	Citas c = new Citas();
-	Pacientes p = new Pacientes();
-	RegistrarCitas rg = new RegistrarCitas();
-	Config co = new Config();
+	
+	
+	
+	
 	
 	/**
 	 * Launch the application.
@@ -47,7 +51,7 @@ public class JMenuAdmin implements Ventana {
 	/**
 	 * Create the application.
 	 */
-	public JMenuAdmin() {
+	private JMenuAdmin() {
 		initialize();
 	}
 
@@ -67,6 +71,11 @@ public class JMenuAdmin implements Ventana {
 		panel.setBounds(0, 0, 203, 452);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		contenedor = new JPanel(new BorderLayout());
+		contenedor.setBounds(203, 0, 481, 452);
+		frame.getContentPane().add(contenedor);
+		
 		
 		JLabel lblNewLabel_1_2_1_1 = new JLabel("");
 		lblNewLabel_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\setting.png"));
@@ -119,11 +128,7 @@ public class JMenuAdmin implements Ventana {
 		BtnPrincipal.setOpaque(false);
 		BtnPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EliminarVentanas();
-				h.setBounds(203, 0, 481, 452);
-				frame.getContentPane().add(h);
-				frame.revalidate();
-				frame.repaint();
+				ShowHome(); 
 			}
 		});
 		BtnPrincipal.addMouseListener(new MouseAdapter() {
@@ -152,11 +157,7 @@ public class JMenuAdmin implements Ventana {
 		BtnCitas.setOpaque(false);
 		BtnCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EliminarVentanas();
-				c.setBounds(203, 0, 481, 452);
-				frame.getContentPane().add(c);
-				frame.revalidate();
-				frame.repaint();
+				ShowAppointment(); 
 			}
 		});
 		BtnCitas.addMouseListener(new MouseAdapter() {
@@ -185,11 +186,7 @@ public class JMenuAdmin implements Ventana {
 		BtnPacientes.setOpaque(false);
 		BtnPacientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EliminarVentanas();
-				p.setBounds(203, 0, 481, 452);
-				frame.getContentPane().add(p);
-				frame.revalidate();
-				frame.repaint();
+				 ShowPatients();
 			}
 		});
 		BtnPacientes.addMouseListener(new MouseAdapter() {
@@ -218,11 +215,7 @@ public class JMenuAdmin implements Ventana {
 		BtnRegistro.setOpaque(false);
 		BtnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EliminarVentanas();
-				rg.setBounds(203, 0, 481, 452);
-				frame.getContentPane().add(rg);
-				frame.revalidate();
-				frame.repaint();
+				ShowRegisterAppointment();
 			}
 		});
 		BtnRegistro.addMouseListener(new MouseAdapter() {
@@ -251,11 +244,7 @@ public class JMenuAdmin implements Ventana {
 		BtnConfig.setOpaque(false);
 		BtnConfig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EliminarVentanas();
-				co.setBounds(203, 0, 481, 452);
-				frame.getContentPane().add(co);
-				frame.revalidate();
-				frame.repaint();
+				ShowSettings();
 			}
 		});
 		BtnConfig.addMouseListener(new MouseAdapter() {
@@ -279,15 +268,13 @@ public class JMenuAdmin implements Ventana {
 		BtnConfig.setFocusTraversalKeysEnabled(false);
 		BtnConfig.setBounds(0, 393, 203, 59);
 		panel.add(BtnConfig);
+		
+		
 			
 	}
 	
 	public void EliminarVentanas() {
-		frame.remove(h);
-		frame.remove(c);
-		frame.remove(p);
-		frame.remove(rg);
-		frame.remove(co);
+		contenedor.removeAll();
 		
 	}
 
@@ -301,5 +288,55 @@ public class JMenuAdmin implements Ventana {
 		return frame;
 	}
 	
+	 public static  JMenuAdmin obtenerInstancia() {
+	        if (instanciaUnica == null) {
+	            instanciaUnica = new  JMenuAdmin();
+	        }
+	        return instanciaUnica;
+	    }
+	 
+	public void ShowPatients() {
+		EliminarVentanas();
+		Pacientes p = new Pacientes(this);
+		p.setBounds(203, 0, 481, 452);
+		contenedor.add(p, BorderLayout.CENTER);
+		contenedor.revalidate();
+		contenedor.repaint();
+	}
 	
+	public void ShowHome() {
+		EliminarVentanas();
+		Home h = new Home();
+		h.setBounds(203, 0, 481, 452);
+		contenedor.add(h,  BorderLayout.CENTER);
+		contenedor.revalidate();
+		contenedor.repaint();
+	}
+	
+	public void ShowAppointment() {
+		EliminarVentanas();
+		Citas c = new Citas();
+		c.setBounds(203, 0, 481, 452);
+		contenedor.add(c, BorderLayout.CENTER);
+		contenedor.revalidate();
+		contenedor.repaint();
+	}
+	
+	public void ShowRegisterAppointment() {
+		EliminarVentanas();
+		RegistrarCitas rg = new RegistrarCitas();
+		rg.setBounds(0, 0, 481, 452);
+		contenedor.add(rg, BorderLayout.CENTER);
+		contenedor.revalidate();
+		contenedor.repaint();
+	}
+	
+	public void ShowSettings() {
+		EliminarVentanas();
+		Config co = new Config();
+		co.setBounds(0, 0, 481, 452);
+		contenedor.add(co, BorderLayout.CENTER);
+		contenedor.revalidate();
+		contenedor.repaint();
+	}
 }

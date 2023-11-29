@@ -184,7 +184,7 @@ public class JLogin implements Ventana{
 					Conexion.EstablecerConexion().close();
 					
 					if(inicio==true) {
-						JMenuAdmin menu = new JMenuAdmin();
+						JMenuAdmin menu = JMenuAdmin.obtenerInstancia();
 						menu.ShowVentana();
 						frmSignIn.dispose();
 					}
