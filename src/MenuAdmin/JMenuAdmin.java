@@ -339,4 +339,14 @@ public class JMenuAdmin implements Ventana {
 		contenedor.revalidate();
 		contenedor.repaint();
 	}
+	
+	@SuppressWarnings("deprecation")
+	public void EnableWindows() {
+		frame.enable();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void DisableWindows() {
+		frame.disable();
+	}
 }

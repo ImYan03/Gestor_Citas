@@ -107,6 +107,35 @@ public class Tools {
 			}
 	}
 	
+	public DefaultTableModel ShowPacientesByNombre( String nombre) {
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		try {
+			String consulta = "SELECT * FROM Pacientes WHERE Nombre LIKE '" + nombre + "%'";
+			Statement sql = Conexion.EstablecerConexion().createStatement();
+			ResultSet tabla = sql.executeQuery(consulta);
+			int columnas = tabla.getMetaData().getColumnCount();
+			for(int i = 1; i<=columnas; i++) {
+				modelo.addColumn(tabla.getMetaData().getColumnName(i));
+			}
+			
+			while (tabla.next()) {
+				Object[] fila = new Object[columnas];
+				for(int i = 1; i<=columnas; i++) {
+					fila[i-1] = tabla.getObject(i);
+				}
+				modelo.addRow(fila);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		modelo.fireTableDataChanged();
+		return modelo;
+	}
+	
 	
 }
 	
