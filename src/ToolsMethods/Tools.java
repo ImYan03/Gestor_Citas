@@ -1,8 +1,15 @@
 package ToolsMethods;
 
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import ConexionBD.Conexion;
 
@@ -111,7 +118,7 @@ public class Tools {
 		
 		DefaultTableModel modelo = new DefaultTableModel();
 		try {
-			String consulta = "SELECT * FROM Pacientes WHERE Nombre LIKE '" + nombre + "%'";
+			String consulta = "SELECT * FROM Pacientes WHERE Nombre LIKE '%" + nombre + "%';";
 			Statement sql = Conexion.EstablecerConexion().createStatement();
 			ResultSet tabla = sql.executeQuery(consulta);
 			int columnas = tabla.getMetaData().getColumnCount();
@@ -136,7 +143,52 @@ public class Tools {
 		return modelo;
 	}
 	
+	public void pintarBotones(JButton btn) {
+		btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btn.setBackground(new Color(200, 211, 227));
+				btn.setForeground(new Color(7, 43, 95));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btn.setBackground(new Color(7, 43, 95));
+				btn.setForeground(new Color(255,255,255));
+			}
+		});
+	}
 	
+	public void CambiarImagen(JPanel panel, JLabel Img, JLabel ImgChanged) {
+		Color color = new Color(245,245,245);
+		if(panel.getBackground().equals(color)) {
+			Img.setVisible(false);
+			ImgChanged.setVisible(true);
+		}else {
+			Img.setVisible(true);
+			ImgChanged.setVisible(false);
+		}
+	}
+	
+	public void pintarPanelYLabel(JPanel panel, JLabel label, JLabel Img, JLabel ImgChanged) {
+		
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setBackground(new Color(245,245,245));
+				label.setForeground(new Color(7, 43, 95));
+				CambiarImagen(panel, Img, ImgChanged);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel.setBackground(new Color(10, 59, 129));
+				label.setForeground(new Color(255,255,255));
+				CambiarImagen(panel, Img, ImgChanged);
+			}
+		});
+	}
 }
+	
+
+
 	
 
