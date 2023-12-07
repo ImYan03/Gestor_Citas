@@ -82,12 +82,6 @@ public class RegistrarCitas extends JPanel {
 		FechaTxt.setBounds(11, 128, 205, 23);
 		panelpacientes.add(FechaTxt);
 		
-		JComboBox<?> PacientesCmb_1 = new JComboBox<Object>();
-		PacientesCmb_1.setMaximumRowCount(5);
-		PacientesCmb_1.setModel(new DefaultComboBoxModel(new String[] {"hola", "como estas", "si", "no", "talvez", "no se", "asda", "asdasd", "asd", "asd", "asd", "asdas", "das", "das", "das", "d"}));
-		PacientesCmb_1.setBounds(10, 176, 209, 22);
-		panelpacientes.add(PacientesCmb_1);
-		
 		JPanel panelbotones = new JPanel();
 		panelbotones.setLayout(null);
 		panelbotones.setBackground(new Color(251, 251, 251));

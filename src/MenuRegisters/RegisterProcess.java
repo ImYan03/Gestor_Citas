@@ -157,7 +157,7 @@ public class RegisterProcess extends JPanel {
 		lblphone.setBounds(10, 65, 131, 14);
 		panelpacientes.add(lblphone);
 		
-		JLabel lblemail = new JLabel("Email:");
+		JLabel lblemail = new JLabel("Description");
 		lblemail.setForeground(new Color(5, 30, 67));
 		lblemail.setFont(new Font("Roboto", Font.BOLD, 11));
 		lblemail.setBounds(9, 111, 125, 14);

@@ -6,27 +6,23 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-	public Conexion() {
-		// TODO Auto-generated constructor stub
-	}
+    public Conexion() {
+        // Constructor
+    }
 
-	public static Connection EstablecerConexion() {
-		
-		String url = "jdbc:sqlserver://localhost:1433;"
-				+ "database=Odontodom;"
-				+ "user=JeanPC;"
-				+ "password=conexion123;"
-				+ "loginTimeout=1;"
-				+ "encrypt=true;trustServerCertificate=true;";
-		
-		try {
-			return DriverManager.getConnection(url);
-		}catch(SQLException ex) {
-			System.out.println(ex.toString());
-			return null;	
-		}
-		
-		
-	}
-	
+    public static Connection EstablecerConexion() {
+
+        String url = "jdbc:mysql://localhost:3306/odontodomm?useSSL=false&serverTimezone=UTC";
+        String usuario = "root"; 
+        String contraseña = "conexion123"; 
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            return DriverManager.getConnection(url, usuario, contraseña);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace(); 
+            return null;
+        }
+    }
 }
