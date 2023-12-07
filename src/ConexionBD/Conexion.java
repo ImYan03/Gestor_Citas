@@ -1,4 +1,4 @@
-Dpackage ConexionBD;
+package ConexionBD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
