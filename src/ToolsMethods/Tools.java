@@ -6,9 +6,13 @@ import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import ConexionBD.Conexion;
@@ -186,6 +190,51 @@ public class Tools {
 			}
 		});
 	}
+	
+	public void GetCantClients(JLabel lbl) {
+		String consulta = "SELECT COUNT(*) AS Total FROM Pacientes;";
+		try {
+			Statement sql = Conexion.EstablecerConexion().createStatement();
+			ResultSet result = sql.executeQuery(consulta);
+			int num;
+			String numS;
+			while(result.next()) {
+				num = result.getInt("Total");
+				numS = String.valueOf(num); 
+				lbl.setText(numS);
+			}
+			
+			sql.close();
+			Conexion.EstablecerConexion().close();
+			
+		}catch(SQLException ex){
+			JOptionPane.showMessageDialog(null,ex);
+		}
+	}
+	
+	public void ObtenerHora(JLabel lbl) {
+		
+		 Timer timer = new Timer();
+	        TimerTask actualizarHora = new TimerTask() {
+	            public void run() {
+	            	int hora;
+	        		int minutos;
+	                LocalTime horaActual = LocalTime.now();
+	                hora = horaActual.getHour();
+	                minutos = horaActual.getMinute();
+	                String Tiempo = "";
+	                if(hora>=12) {
+	                	Tiempo = "PM";
+	                }else {
+	                	Tiempo = "AMito";
+	                }
+	                
+	                lbl.setText(String.format("%02d:%02d ", hora, minutos) + Tiempo);
+	            }
+	        };
+
+	        timer.schedule(actualizarHora, 0, 1000);
+	    }
 }
 	
 
