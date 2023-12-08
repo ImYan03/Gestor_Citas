@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
