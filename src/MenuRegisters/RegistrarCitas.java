@@ -82,6 +82,10 @@ public class RegistrarCitas extends JPanel {
 		FechaTxt.setBounds(11, 128, 205, 23);
 		panelpacientes.add(FechaTxt);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 173, 208, 22);
+		panelpacientes.add(panel);
+		
 		JPanel panelbotones = new JPanel();
 		panelbotones.setLayout(null);
 		panelbotones.setBackground(new Color(251, 251, 251));

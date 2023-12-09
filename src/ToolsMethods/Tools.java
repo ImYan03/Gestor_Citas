@@ -10,7 +10,10 @@ import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -125,7 +128,9 @@ public class Tools {
 			String consulta = "SELECT * FROM Pacientes WHERE Nombre LIKE '%" + nombre + "%';";
 			Statement sql = Conexion.EstablecerConexion().createStatement();
 			ResultSet tabla = sql.executeQuery(consulta);
+			
 			int columnas = tabla.getMetaData().getColumnCount();
+			
 			for(int i = 1; i<=columnas; i++) {
 				modelo.addColumn(tabla.getMetaData().getColumnName(i));
 			}
@@ -235,6 +240,30 @@ public class Tools {
 
 	        timer.schedule(actualizarHora, 0, 1000);
 	    }
+	
+	
+	public void CmbSpecialty(JComboBox<Object> cmb) {
+		  String query = "SELECT Nombre FROM Especialidad;";
+
+		    try {
+		        Statement sql = Conexion.EstablecerConexion().createStatement();
+		        ResultSet res = sql.executeQuery(query);
+		        
+		        ComboBoxModel<Object> model = new DefaultComboBoxModel<>(); // Crear un modelo de ComboBox
+		        
+		        while (res.next()) {
+		            String nombreEspecialidad = res.getString("Nombre");
+		            ((DefaultComboBoxModel<Object>) model).addElement(nombreEspecialidad); // Agregar cada nombre de especialidad al modelo
+		        }
+
+		        cmb.setModel(model); // Establecer el modelo en el JComboBox
+
+		    } catch (SQLException e) {
+		        e.printStackTrace(); // Manejo básico de excepciones
+		    }
+		
+	}
+	
 }
 	
 

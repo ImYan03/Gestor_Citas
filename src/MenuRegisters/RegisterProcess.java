@@ -14,6 +14,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+
+import ToolsMethods.Tools;
+
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
@@ -23,6 +26,7 @@ public class RegisterProcess extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTable table;
 	private JTextField textField;
+	Tools T = new Tools();
 	/**
 	 * Create the panel.
 	 */
@@ -163,13 +167,14 @@ public class RegisterProcess extends JPanel {
 		lblemail.setBounds(9, 111, 125, 14);
 		panelpacientes.add(lblemail);
 		
-		JComboBox<?> comboBox = new JComboBox<Object>();
-		comboBox.setFocusable(false);
-		comboBox.setFocusTraversalKeysEnabled(false);
-		comboBox.setLightWeightPopupEnabled(false);
-		comboBox.setBackground(new Color(240, 240, 240));
-		comboBox.setBounds(11, 83, 206, 22);
-		panelpacientes.add(comboBox);
+		JComboBox<Object> EspecialidadCmb = new JComboBox<Object>();
+		T.CmbSpecialty(EspecialidadCmb);
+		EspecialidadCmb.setFocusable(false);
+		EspecialidadCmb.setFocusTraversalKeysEnabled(false);
+		EspecialidadCmb.setLightWeightPopupEnabled(false);
+		EspecialidadCmb.setBackground(new Color(240, 240, 240));
+		EspecialidadCmb.setBounds(11, 83, 206, 22);
+		panelpacientes.add(EspecialidadCmb);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBorder(new LineBorder(new Color(192, 192, 192)));
