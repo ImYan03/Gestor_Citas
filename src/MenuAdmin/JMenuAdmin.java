@@ -33,7 +33,8 @@ public class JMenuAdmin implements Ventana {
 	JPanel PanelDespliegue;
 	JPanel contenedor, panelHome, panelAppoint,panelRegister,panelPays;
 	JLabel LblHome, lblRegister, lblAppointment, lblPayments,FPays,FPaysAzul,FHome,FHomeAzul,FRegister,FRegisterAzul,FAppoint, FAppointAzul;
-	
+	Color azul = new Color(10, 59, 129);
+	Color blanco = new Color(255, 255, 255);
 	
 	/**
 	 * Launch the application.
@@ -65,7 +66,7 @@ public class JMenuAdmin implements Ventana {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setType(Type.POPUP);
-		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setBackground(blanco);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 700, 491);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,7 +108,7 @@ public class JMenuAdmin implements Ventana {
 			}
 		});
 		panelHome.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panelHome.setBackground(new Color(10, 59, 129));
+		panelHome.setBackground(azul);
 		panelHome.setBounds(-5, 87, 208, 54);
 		panel.add(panelHome);
 		panelHome.setLayout(null);
@@ -124,11 +125,11 @@ public class JMenuAdmin implements Ventana {
 		
 		LblHome = new JLabel("Home");
 		LblHome.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
-		LblHome.setForeground(new Color(255, 255, 255));
+		LblHome.setForeground(blanco);
 		LblHome.setBounds(67, 19, 46, 14);
 		panelHome.add(LblHome);
 		
-		T.pintarPanelYLabel(panelHome, LblHome,FHome, FHomeAzul);
+		T.pintarPanelYLabel(panelHome, LblHome,FHome, blanco, azul );
 		
 		panelAppoint = new JPanel();
 		panelAppoint.addMouseListener(new MouseAdapter() {
@@ -138,7 +139,7 @@ public class JMenuAdmin implements Ventana {
 			}
 		});
 		panelAppoint.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panelAppoint.setBackground(new Color(10, 59, 129));
+		panelAppoint.setBackground(azul);
 		panelAppoint.setBounds(-5, 140, 208, 54);
 		panel.add(panelAppoint);
 		panelAppoint.setLayout(null);
@@ -154,12 +155,12 @@ public class JMenuAdmin implements Ventana {
 		panelAppoint.add(FAppointAzul);
 		
 		lblAppointment = new JLabel("Appointments");
-		lblAppointment.setForeground(Color.WHITE);
+		lblAppointment.setForeground(blanco);
 		lblAppointment.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
 		lblAppointment.setBounds(68, 20, 106, 14);
 		panelAppoint.add(lblAppointment);
 		
-		T.pintarPanelYLabel(panelAppoint, lblAppointment, FAppoint, FAppointAzul);
+		T.pintarPanelYLabel(panelAppoint, lblAppointment, FAppoint, blanco, azul );
 		
 		panelRegister = new JPanel();
 		panelRegister.addMouseListener(new MouseAdapter() {
@@ -169,7 +170,7 @@ public class JMenuAdmin implements Ventana {
 			}
 		});
 		panelRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panelRegister.setBackground(new Color(10, 59, 129));
+		panelRegister.setBackground(azul);
 		panelRegister.setBounds(-5, 193, 208, 54);
 		panel.add(panelRegister);
 		panelRegister.setLayout(null);
@@ -185,12 +186,12 @@ public class JMenuAdmin implements Ventana {
 		panelRegister.add(FRegisterAzul);
 		
 		lblRegister = new JLabel("Register");
-		lblRegister.setForeground(Color.WHITE);
+		lblRegister.setForeground(blanco);
 		lblRegister.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
 		lblRegister.setBounds(69, 17, 187, 23);
 		panelRegister.add(lblRegister);
 		
-		T.pintarPanelYLabel(panelRegister, lblRegister, FRegister, FRegisterAzul);
+		T.pintarPanelYLabel(panelRegister, lblRegister, FRegister ,blanco, azul );
 		
 		panelPays = new JPanel();
 		panelPays.setVisible(false);
@@ -201,7 +202,7 @@ public class JMenuAdmin implements Ventana {
 			}
 		});
 		panelPays.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panelPays.setBackground(new Color(10, 59, 129));
+		panelPays.setBackground(azul);
 		panelPays.setBounds(-5, 246, 208, 54);
 		panel.add(panelPays);
 		panelPays.setLayout(null);
@@ -219,12 +220,12 @@ public class JMenuAdmin implements Ventana {
 		lblPayments = new JLabel("Payments");
 		lblPayments.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblPayments.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPayments.setForeground(Color.WHITE);
+		lblPayments.setForeground(blanco);
 		lblPayments.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
 		lblPayments.setBounds(70, 20, 60, 14);
 		panelPays.add(lblPayments);
 		
-		T.pintarPanelYLabel(panelPays, lblPayments ,FPays, FPaysAzul);
+		T.pintarPanelYLabel(panelPays, lblPayments ,FPays,blanco, azul );
 		
 		JPanel panelBills = new JPanel();
 		panelBills.setVisible(false);
@@ -236,7 +237,7 @@ public class JMenuAdmin implements Ventana {
 		});
 		panelBills.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panelBills.setLayout(null);
-		panelBills.setBackground(new Color(10, 59, 129));
+		panelBills.setBackground(azul);
 		panelBills.setBounds(-5, 300, 208, 54);
 		panel.add(panelBills);
 		
@@ -253,7 +254,7 @@ public class JMenuAdmin implements Ventana {
 		JLabel LblUser = new JLabel("Bills");
 		LblUser.setHorizontalTextPosition(SwingConstants.CENTER);
 		LblUser.setHorizontalAlignment(SwingConstants.CENTER);
-		T.pintarPanelYLabel(panelBills, LblUser, FUser, FUserAzul);
+		T.pintarPanelYLabel(panelBills, LblUser, FUser,blanco, azul );
 		LblUser.setForeground(Color.WHITE);
 		LblUser.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
 		LblUser.setBounds(74, 19, 28, 14);
@@ -348,7 +349,7 @@ public class JMenuAdmin implements Ventana {
 		
 		public void ShowDoctor() {
 			EliminarVentanas();
-			RegisterDoctor doc = new RegisterDoctor();
+			RegisterDoctor doc = new RegisterDoctor(this);
 			doc.setBounds(0, 0, 481, 452);
 			contenedor.add(doc, BorderLayout.CENTER);
 			contenedor.revalidate();

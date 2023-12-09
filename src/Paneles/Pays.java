@@ -20,6 +20,8 @@ public class Pays extends JPanel {
 	private JTextField textField;
 	private JTable table;
 	Tools T = new Tools();
+	Color azul = new Color(10, 59, 129);
+	Color blanco = new Color(255, 255, 255);
 
 	/**
 	 * Create the panel.
@@ -87,7 +89,7 @@ public class Pays extends JPanel {
 		PictureUpAzul.setBounds(46, 3, 32, 34);
 		panel_1.add(PictureUpAzul);
 		
-		T.pintarPanelYLabel(panel_1, UpdateLbl, PictureUp, PictureUpAzul);
+		T.pintarPanelYLabel(panel_1, UpdateLbl, PictureUp, blanco, azul);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -112,7 +114,7 @@ public class Pays extends JPanel {
 		PictureDeAzul.setBounds(46, 2, 32, 34);
 		panel_1_1.add(PictureDeAzul);
 		
-		T.pintarPanelYLabel(panel_1_1, DeleteLbl, PictureDe, PictureDeAzul);
+		T.pintarPanelYLabel(panel_1_1, DeleteLbl, PictureDe, blanco, azul);
 		
 		JPanel panel_1_1_1 = new JPanel();
 		panel_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -137,7 +139,7 @@ public class Pays extends JPanel {
 		PictureAccAzul.setBounds(33, 3, 32, 34);
 		panel_1_1_1.add(PictureAccAzul);
 		
-		T.pintarPanelYLabel(panel_1_1_1, AccountLbl, PictureAcc, PictureAccAzul);
+		T.pintarPanelYLabel(panel_1_1_1, AccountLbl, PictureAcc, blanco, azul);
 		
 
 	}

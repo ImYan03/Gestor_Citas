@@ -55,7 +55,7 @@ public class Pacientes extends JPanel {
 		setBackground(new Color(251, 251, 251));
 		setBounds(0,0, 481, 452);
 		setLayout(null);
-		DefaultTableModel modelo = T.MostrarTablaPacientes();
+		DefaultTableModel modelo = T.MostrarTabla("Pacientes");
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBackground(new Color(0, 0, 64));
@@ -337,7 +337,7 @@ public class Pacientes extends JPanel {
 				int selectedrow = table.getSelectedRow();
 				if(selectedrow >= 0 && selectedrow < modelo.getRowCount()) {
 					int id = (int) modelo.getValueAt(selectedrow, 0);
-					T.EliminarDatosPacientes(id);
+					T.EliminarDatos(id, "Pacientes", "PacientesID");
 					modelo.removeRow(selectedrow);
 				}
 			}

@@ -35,7 +35,9 @@ public class PacientesShow extends JFrame implements Ventana {
 	String Name,Proname,Email,Phone,Date,ID;
 	@SuppressWarnings("unused")
 	private JMenuAdmin instanciaJMenuAdmin; 	
-	DefaultTableModel modelo = T.MostrarTablaPacientes();
+	DefaultTableModel modelo = T.MostrarTabla("Pacientes");
+	Color azul = new Color(10, 59, 129);
+	Color blanco = new Color(255, 255, 255);
 
 	/**
 	 * Create the frame.
@@ -82,7 +84,7 @@ public class PacientesShow extends JFrame implements Ventana {
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				modelo = T.ShowPacientesByNombre(textField.getText());
+				modelo = T.FilterTable(textField.getText(),"Pacientes","Nombre");
 				table.setModel(modelo);
 			}
 			@Override
@@ -131,7 +133,7 @@ public class PacientesShow extends JFrame implements Ventana {
 		PictureAzul.setBounds(62, 4, 32, 34);
 		UpdatePanel.add(PictureAzul);
 		
-		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, PictureAzul);
+		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, blanco, azul);
 		
 		JPanel DeletePanel = new JPanel();
 		DeletePanel.addMouseListener(new MouseAdapter() {
@@ -162,7 +164,7 @@ public class PacientesShow extends JFrame implements Ventana {
 		PictureDeAzul.setBounds(61, 3, 32, 34);
 		DeletePanel.add(PictureDeAzul);
 		
-		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, PictureDeAzul);
+		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, blanco, azul);
 		
 		 addWindowListener((WindowListener) new WindowAdapter() {
 	            @Override
@@ -192,7 +194,7 @@ public class PacientesShow extends JFrame implements Ventana {
 			int selectedrow = table.getSelectedRow();
 			if(selectedrow >= 0 && selectedrow < modelo.getRowCount()) {
 				int id = (int) modelo.getValueAt(selectedrow, 0);
-				T.EliminarDatosPacientes(id);
+				T.EliminarDatos(id,"Pacientes", "PacientesID");
 				modelo.removeRow(selectedrow);
 			}
 	 }

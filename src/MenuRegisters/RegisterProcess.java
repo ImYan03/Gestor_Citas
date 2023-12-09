@@ -168,7 +168,7 @@ public class RegisterProcess extends JPanel {
 		panelpacientes.add(lblemail);
 		
 		JComboBox<Object> EspecialidadCmb = new JComboBox<Object>();
-		T.CmbSpecialty(EspecialidadCmb);
+		T.CmbSpecialty(EspecialidadCmb, "Especialidad", "Nombre");
 		EspecialidadCmb.setFocusable(false);
 		EspecialidadCmb.setFocusTraversalKeysEnabled(false);
 		EspecialidadCmb.setLightWeightPopupEnabled(false);

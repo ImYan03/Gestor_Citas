@@ -136,12 +136,12 @@ public class PacientesEdit extends JFrame implements Ventana{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Tools t = new Tools();
-				t.ActualizarDatosPacientes(id2, "Nombre", Name.getText());
-				t.ActualizarDatosPacientes(id2, "Apellido", proname.getText());
-				t.ActualizarDatosPacientes(id2, "Email", email.getText());
-				t.ActualizarDatosPacientes(id2, "Telefono", phone.getText());
-				t.ActualizarDatosPacientes(id2, "Fecha", date.getText());
-				t.ActualizarDatosPacientes(id2, "Cedula", id.getText());
+				t.ActualizarDatos("Pacientes",id2, "Nombre", Name.getText(),"PacientesID");
+				t.ActualizarDatos("Pacientes",id2, "Apellido", proname.getText(),"PacientesID");
+				t.ActualizarDatos("Pacientes",id2, "Email", email.getText(),"PacientesID");
+				t.ActualizarDatos("Pacientes",id2, "Telefono", phone.getText(),"PacientesID");
+				t.ActualizarDatos("Pacientes",id2, "Fecha", date.getText(),"PacientesID");
+				t.ActualizarDatos("Pacientes",id2, "Cedula", id.getText(),"PacientesID");
 				instanciaJMenuAdmin.ShowPatients();
 				
 				dispose();
