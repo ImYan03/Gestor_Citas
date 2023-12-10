@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import ConexionBD.Conexion;
 import MenuAdmin.JMenuAdmin;
 import MenuShow.DoctorsShow;
+import MenuUpdates.DoctorEdit;
+import MenuUpdates.PacientesEdit;
 import ToolsMethods.Tools;
 
 import javax.swing.UIManager;
@@ -43,6 +45,8 @@ public class RegisterDoctor extends JPanel {
 	private JPanel panelDoctor,panelTable;
 	Tools t = new Tools();
 	private JMenuAdmin instanciaJMenuAdmin;
+	private String Nombre,Apellido,Especialidad,Email,Phone;
+	DefaultTableModel modelo = t.MostrarTabla("Doctores");
 	/**
 	 * Create the panel.
 	 */
@@ -70,7 +74,7 @@ public class RegisterDoctor extends JPanel {
 		
 		//ComboBox de Especialidad
 		JComboBox<Object> comboBx_Especialidad = new JComboBox<Object>();
-		t.CmbSpecialty(comboBx_Especialidad);
+		t.CmbSpecialty(comboBx_Especialidad,"Especialidad","Nombre");
 		comboBx_Especialidad.setFocusable(false);
 		comboBx_Especialidad.setFocusTraversalKeysEnabled(false);
 		comboBx_Especialidad.setLightWeightPopupEnabled(false);
@@ -109,10 +113,9 @@ public class RegisterDoctor extends JPanel {
 								JOptionPane.showMessageDialog(null, mensaje);
 							}
 							else {
-									try {				
+									try {
 										Statement sql2 = Conexion.EstablecerConexion().createStatement();
 										String consulta2 = "Insert into Doctores (Nombres,Apellido,EspecialidadID,Email,Telefono)values("
-										
 											+ "'" + Nametxt.getText()+"'," 	
 											+ "'" + LastNametxt.getText()+"',"
 											+ "'" + comboBox_ID + "',"
@@ -120,6 +123,22 @@ public class RegisterDoctor extends JPanel {
 											+ "'" + Phonetxt.getText() + "');";			
 										
 										sql2.executeUpdate(consulta2);
+										
+										String consulta3 = "Select DoctorID From Doctores where Nombres = '"+Nametxt.getText()+"'";
+										ResultSet res = sql2.executeQuery(consulta3);	
+										
+										int id;
+										String Sid = "";
+											while(res.next()) {
+												id = res.getInt("DoctorID");
+												Sid = String.valueOf(id);
+											}
+											
+											Object[] nuevaFila = {Sid,Nametxt.getText(), LastNametxt.getText(), 
+													Emailtxt.getText(), Phonetxt.getText()};
+											
+										modelo.addRow(nuevaFila);
+										modelo.fireTableDataChanged();
 									}catch(SQLException ex) {	
 										JOptionPane.showMessageDialog(null, ex.toString());
 									}
@@ -149,53 +168,29 @@ public class RegisterDoctor extends JPanel {
 		panelTable.setBounds(10, 284, 461, 152);
 		add(panelTable);	
 				
-		DefaultTableModel modelo = t.MostrarTablaPacientes("Doctores");
-		
-				// Tabla de muestra
-				DoctorTable = new JTable(modelo);
-				DoctorTable.setGridColor(UIManager.getColor("ScrollBar.background"));
-				DoctorTable.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				DoctorTable.setBounds(0, 0, 439, 0);
-				panelTable.add(DoctorTable);
 				
 				JScrollPane scrollPane = new JScrollPane((Component) null);
 				scrollPane.setBounds(10, 11, 441, 130);
 				panelTable.add(scrollPane);
+				
+					// Tabla de muestra
+					DoctorTable = new JTable(modelo);
+					scrollPane.setViewportView(DoctorTable);
+					DoctorTable.setGridColor(UIManager.getColor("ScrollBar.background"));
+					DoctorTable.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+	
 					//Evento de show	
 		btnShow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				DoctorsShow D = new DoctorsShow(instanciaJMenuAdmin);
+				DoctorsShow D = new DoctorsShow(instanciaJMenuAdmin,modelo);
 				D.ShowVentana();
-				
-				try {
-					Statement sql3 = Conexion.EstablecerConexion().createStatement();
-					String consulta3 = "Select *from Doctores";
-					
-					ResultSet Datos_Doc = sql3.executeQuery(consulta3);
-					
-					// Esto es para la tabla de Preview inmediato
-					int columnas = Datos_Doc.getMetaData().getColumnCount();
-					
-					String Especialidad_Item = (String)comboBx_Especialidad.getSelectedItem();
-					
-					for (int i = 1; i < columnas; i++ ) {
-							modelo.addColumn(Datos_Doc.getMetaData().getColumnName(i));
-						}
-					while (Datos_Doc.next()) {
-						Object[] nuevaFila = {Nametxt.getText(), LastNametxt.getText(), Especialidad_Item,
-								Emailtxt.getText(), Phonetxt.getText()};
-						modelo.addRow(nuevaFila);
-						modelo.fireTableDataChanged();
-						t.LimpiarCampos(Nametxt,LastNametxt,Emailtxt,Phonetxt);
-					}
-					} catch (SQLException ex) {
-					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(null, ex.toString());
-					}		
+				modelo.fireTableDataChanged();
 			}
 		});
+		
+		// Recuerda hacer la ventana de Update (Para Joseph del futuro):
 		JButton btnUpdate = new JButton("Update\r\n");
 		btnUpdate.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\edita.png"));
 		btnUpdate.setForeground(Color.WHITE);
@@ -208,14 +203,32 @@ public class RegisterDoctor extends JPanel {
 		btnUpdate.setBounds(10, 96, 203, 34);
 		panelbotones.add(btnUpdate);
 		
+		// Pendiente
 		btnUpdate.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
+				int selectedrow = DoctorTable.getSelectedRow();
+
+				if (selectedrow >= 0) {
+					Nombre = (String) modelo.getValueAt(selectedrow, 0);
+				    Apellido = (String) modelo.getValueAt(selectedrow, 1);
+				    Especialidad = (String) modelo.getValueAt(selectedrow, 2);
+				    Email = (String) modelo.getValueAt(selectedrow, 3);
+				    Object phoneObj = modelo.getValueAt(selectedrow, 4);
+				    Phone = phoneObj != null ? phoneObj.toString() : "";
+				    DoctorEdit edit = new DoctorEdit();
+					edit.setName(Nombre);
+					edit.setProname(Apellido);
+					edit.setEmail(Email);
+					edit.setPhone(Phone);
+					edit.ShowVentana();	
+					edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
+				}
 			}
 		});
-		
+				
+		// Bregar el boton el Delete
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\delete.png"));
 		btnDelete.setForeground(Color.WHITE);
@@ -227,6 +240,19 @@ public class RegisterDoctor extends JPanel {
 		btnDelete.setBackground(new Color(7, 43, 95));
 		btnDelete.setBounds(10, 141, 203, 34);
 		panelbotones.add(btnDelete);
+		
+		btnDelete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int Id = DoctorTable.getSelectedRow();
+				if (Id >=0 && Id <= modelo.getRowCount()) {
+					t.EliminarDatos(Id,"Doctores","DoctorID");
+					modelo.removeRow(Id);
+				}
+			}			
+		});
 		
 		JButton btnNew = new JButton("New");
 		btnNew.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\add.png"));
@@ -240,6 +266,13 @@ public class RegisterDoctor extends JPanel {
 		btnNew.setBounds(10, 184, 203, 34);
 		panelbotones.add(btnNew);
 		
+		btnNew.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				t.LimpiarCampos(Nametxt, LastNametxt, Emailtxt, Phonetxt);
+			}
+			
+		});
 		
 		JSeparator tableSeparator = new JSeparator();
 		tableSeparator.setBackground(new Color(0, 0, 64));

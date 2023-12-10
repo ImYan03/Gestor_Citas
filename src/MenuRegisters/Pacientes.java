@@ -30,7 +30,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 
 
-
 public class Pacientes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -55,14 +54,14 @@ public class Pacientes extends JPanel {
 		setBackground(new Color(251, 251, 251));
 		setBounds(0,0, 481, 452);
 		setLayout(null);
-		DefaultTableModel modelo = T.MostrarTablaPacientes("Pacientes");
+		DefaultTableModel modelo = T.MostrarTabla("Pacientes");
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBackground(new Color(0, 0, 64));
 		separator_1.setBounds(10, 35, 461, 10);
 		add(separator_1);
 		
-		
+	
 		JPanel panelpacientes = new JPanel();
 		panelpacientes.setBackground(new Color(251, 251, 251));
 		panelpacientes.setBounds(10, 35, 228, 229);
@@ -236,7 +235,6 @@ public class Pacientes extends JPanel {
 			}
 			
 		}
-		
 				);
 		btnSave.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\diskette.png"));
 		btnSave.setBackground(new Color(7, 43, 95));
@@ -254,6 +252,7 @@ public class Pacientes extends JPanel {
 				s.ShowVentana();
 			}
 		});
+		
 		btnShow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnShow.setBorderPainted(false);
 		btnShow.setForeground(new Color(255, 255, 255));
@@ -273,6 +272,7 @@ public class Pacientes extends JPanel {
 		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btnUpdate.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				int selectedrow = table.getSelectedRow();
@@ -325,6 +325,7 @@ public class Pacientes extends JPanel {
 		btnRefresh.setBounds(114, 96, 99, 34);
 		panelbotones.add(btnRefresh);
 		
+		// Revisar explosion de repeticion.
 		JButton btnDelete = new JButton("Delete");
 		T.pintarBotones(btnDelete);
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -332,11 +333,12 @@ public class Pacientes extends JPanel {
 		btnDelete.setForeground(new Color(255, 255, 255));
 		btnDelete.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btnDelete.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				int selectedrow = table.getSelectedRow();
 				if(selectedrow >= 0 && selectedrow < modelo.getRowCount()) {
 					int id = (int) modelo.getValueAt(selectedrow, 0);
-					T.EliminarDatosPacientes(id);
+					T.EliminarDatos(id,"Pacientes","PacienteID");
 					modelo.removeRow(selectedrow);
 				}
 			}
@@ -360,6 +362,7 @@ public class Pacientes extends JPanel {
 				LimpiarCampos();
 			}
 		});
+		
 		btnNew.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\add.png"));
 		btnNew.setBackground(new Color(7, 43, 95));
 		btnNew.setFocusable(false);

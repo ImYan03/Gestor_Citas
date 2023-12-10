@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 
 import MenuAdmin.JMenuAdmin;
 
+// Ventana de Updates.
 public class PacientesEdit extends JFrame implements Ventana{
 
 	private static final long serialVersionUID = 1L;
@@ -136,12 +137,12 @@ public class PacientesEdit extends JFrame implements Ventana{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Tools t = new Tools();
-				t.ActualizarDatosPacientes(id2, "Nombre", Name.getText());
-				t.ActualizarDatosPacientes(id2, "Apellido", proname.getText());
-				t.ActualizarDatosPacientes(id2, "Email", email.getText());
-				t.ActualizarDatosPacientes(id2, "Telefono", phone.getText());
-				t.ActualizarDatosPacientes(id2, "Fecha", date.getText());
-				t.ActualizarDatosPacientes(id2, "Cedula", id.getText());
+				t.ActualizarDatos("Pacientes",id2, "Nombre", Name.getText(),"PacienteID");
+				t.ActualizarDatos("Pacientes",id2, "Apellido", proname.getText(),"PacienteID");
+				t.ActualizarDatos("Pacientes",id2, "Email", email.getText(),"PacienteID");
+				t.ActualizarDatos("Pacientes",id2, "Telefono", phone.getText(),"PacienteID");
+				t.ActualizarDatos("Pacientes",id2, "Fecha", date.getText(),"PacienteID");
+				t.ActualizarDatos("Pacientes",id2, "Cedula", id.getText(),"PacienteID");
 				instanciaJMenuAdmin.ShowPatients();
 				
 				dispose();
@@ -155,6 +156,11 @@ public class PacientesEdit extends JFrame implements Ventana{
 		panel.add(btnNewButton);
 	}
 	
+	
+	// Jean Carlos te invoco:
+	public void ComboBox_Expecialidad() {
+		
+	}
 	public void setName(String Name) {
 		this.Name.setText(Name);
 	}

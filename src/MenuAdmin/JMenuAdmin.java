@@ -34,6 +34,8 @@ public class JMenuAdmin implements Ventana {
 	JPanel contenedor, panelHome, panelAppoint,panelRegister,panelPays;
 	JLabel LblHome, lblRegister, lblAppointment, lblPayments,FPays,FPaysAzul,FHome,FHomeAzul,FRegister,FRegisterAzul,FAppoint, FAppointAzul;
 	
+	Color azul = new Color(10, 59, 129);
+	Color blanco = new Color(255, 255, 255);
 	
 	/**
 	 * Launch the application.
@@ -128,7 +130,7 @@ public class JMenuAdmin implements Ventana {
 		LblHome.setBounds(67, 19, 46, 14);
 		panelHome.add(LblHome);
 		
-		T.pintarPanelYLabel(panelHome, LblHome,FHome, FHomeAzul);
+		T.pintarPanelYLabel(panelHome, LblHome,FHome, blanco,azul);
 		
 		panelAppoint = new JPanel();
 		panelAppoint.addMouseListener(new MouseAdapter() {
@@ -159,7 +161,7 @@ public class JMenuAdmin implements Ventana {
 		lblAppointment.setBounds(68, 20, 106, 14);
 		panelAppoint.add(lblAppointment);
 		
-		T.pintarPanelYLabel(panelAppoint, lblAppointment, FAppoint, FAppointAzul);
+		T.pintarPanelYLabel(panelAppoint, lblAppointment, FAppoint, blanco,azul);
 		
 		panelRegister = new JPanel();
 		panelRegister.addMouseListener(new MouseAdapter() {
@@ -190,7 +192,7 @@ public class JMenuAdmin implements Ventana {
 		lblRegister.setBounds(69, 17, 187, 23);
 		panelRegister.add(lblRegister);
 		
-		T.pintarPanelYLabel(panelRegister, lblRegister, FRegister, FRegisterAzul);
+		T.pintarPanelYLabel(panelRegister, lblRegister, FRegister, blanco,azul);
 		
 		panelPays = new JPanel();
 		panelPays.setVisible(false);
@@ -224,7 +226,7 @@ public class JMenuAdmin implements Ventana {
 		lblPayments.setBounds(70, 20, 60, 14);
 		panelPays.add(lblPayments);
 		
-		T.pintarPanelYLabel(panelPays, lblPayments ,FPays, FPaysAzul);
+		T.pintarPanelYLabel(panelPays, lblPayments ,FPays, blanco,azul);
 		
 		JPanel panelBills = new JPanel();
 		panelBills.setVisible(false);
@@ -253,21 +255,16 @@ public class JMenuAdmin implements Ventana {
 		JLabel LblUser = new JLabel("Bills");
 		LblUser.setHorizontalTextPosition(SwingConstants.CENTER);
 		LblUser.setHorizontalAlignment(SwingConstants.CENTER);
-		T.pintarPanelYLabel(panelBills, LblUser, FUser, FUserAzul);
+		T.pintarPanelYLabel(panelBills, LblUser, FUser, blanco,azul);
 		LblUser.setForeground(Color.WHITE);
 		LblUser.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
 		LblUser.setBounds(74, 19, 28, 14);
 		panelBills.add(LblUser);
-		
-		
 			
 	}
 	
-
-	
 	void EliminarVentanas() {
-		contenedor.removeAll();
-		
+		contenedor.removeAll();	
 	}
 
 	@Override

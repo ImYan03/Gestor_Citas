@@ -12,17 +12,40 @@ CREATE TABLE Usuarios (
     Contraseña NVARCHAR(100)not null
 );
 
--- Crear tabla Doctores
-CREATE TABLE Doctores (
-    DoctorID INT PRIMARY KEY not null auto_increment,
-    Especialidad NVARCHAR(50) not null,
-    Email NVARCHAR(100) unique,
-    Telefono NVARCHAR(15) unique
+select *from Usuarios;
+
+-- Tabla especialidad
+Create table Especialidad(
+EspecialidadID INT PRIMARY KEY NOT NULL auto_increment,
+Nombre NVARCHAR(100) NOT NULL
 );
+
+CREATE TABLE Doctores (
+    DoctorID INT PRIMARY KEY AUTO_INCREMENT,
+    Nombres NVARCHAR(20),
+    Apellido NVARCHAR(20),
+    EspecialidadID INT,
+    Email NVARCHAR(100) UNIQUE,
+    Telefono NVARCHAR(15) UNIQUE,
+    FOREIGN KEY (EspecialidadID) REFERENCES Especialidad(EspecialidadID) 
+    -- nueva foreign key modjoseph
+);
+
+Select *from Doctores;
+INSERT INTO Especialidad(Nombre) VALUES ('Odontopediatría');
+INSERT INTO Especialidad(Nombre) VALUES ('Ortodoncia');
+INSERT INTO Especialidad(Nombre) VALUES ('Endodoncia');
+INSERT INTO Especialidad(Nombre) VALUES ('Periodoncia');
+INSERT INTO Especialidad(Nombre) VALUES ('Implantología');
+INSERT INTO Especialidad(Nombre) VALUES ('Cirugía Oral');
+INSERT INTO Especialidad(Nombre) VALUES ('Odontología Estética');
+INSERT INTO Especialidad(Nombre) VALUES ('Odontología Conservadora');
+INSERT INTO Especialidad(Nombre) VALUES ('Odontología Preventiva');
+INSERT INTO Especialidad(Nombre) VALUES ('Radiología Odontológica');
 
 -- Crear tabla Pacientes
 CREATE TABLE Pacientes (
-    PacienteID INT PRIMARY KEY not null auto_increment,
+    PacienteID INT PRIMARY KEY auto_increment,
     Nombre NVARCHAR(50) not null,
     Apellido NVARCHAR(50) not null,
     Telefono NVARCHAR(15)unique not null,
@@ -39,24 +62,23 @@ CREATE TABLE Citas (
     Fecha NVARCHAR(30) not null,
     hora NVARCHAR(10) not null,
     Procedures NVARCHAR(255) not null,
-    
+
     FOREIGN KEY (DoctorID) REFERENCES Doctores(DoctorID),
     FOREIGN KEY (PacienteID) REFERENCES Pacientes(PacienteID)
 );
-
 -- Crear tabla ProcedimientosMedicos
 CREATE TABLE ProcedimientosMedicos (
-    ProcedimientoID INT PRIMARY KEY not null auto_increment,
+    ProcedimientoID INT PRIMARY KEY auto_increment,
     Nombre NVARCHAR(50) not null,
     Especialidad NVARCHAR(50) unique not null,
     Descripcion NVARCHAR(205) not null
 );
-
 -- Crear tabla CitaProcedimiento (para la relación muchos a muchos entre citas y procedimientos médicos)
 CREATE TABLE CitaProcedimiento (
-    CitaID INT not null,
+    CitaID INT auto_increment,
     ProcedimientoID INT not null,
     PRIMARY KEY (CitaID, ProcedimientoID),
     FOREIGN KEY (CitaID) REFERENCES Citas(CitaID),
     FOREIGN KEY (ProcedimientoID) REFERENCES ProcedimientosMedicos(ProcedimientoID)
 );
+    

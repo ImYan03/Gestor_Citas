@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import MenuAdmin.JMenuAdmin;
+import MenuRegisters.RegisterDoctor;
 import ToolsMethods.Tools;
 import ToolsMethods.Ventana;
 
@@ -35,22 +36,26 @@ public class DoctorsShow extends JFrame implements Ventana {
 	String Name,Proname,Email,Phone,Date,ID;
 	@SuppressWarnings("unused")
 	private JMenuAdmin instancia; 	
-	DefaultTableModel modelo = T.MostrarTablaPacientes("Doctores");
+	DefaultTableModel modelo = T.MostrarTabla("Doctores");
 
+	Color azul = new Color(10, 59, 129);
+	Color blanco = new Color(255, 255, 255);
+	
+	RegisterDoctor Doctor = new RegisterDoctor(instancia);
 
 	/**
 	 * Create the frame.
 	 */
-	public DoctorsShow(JMenuAdmin instanciaJMenuAdmin) {
+	public DoctorsShow(JMenuAdmin instanciaJMenuAdmin,DefaultTableModel Modelo) {
 		this.instancia = instanciaJMenuAdmin;
+		this.modelo = Modelo;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 626, 419);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(10, 59, 129));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
-		
+				
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -68,7 +73,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 		table = new JTable();
 		table.setBounds(10, 11, 346, 355);
 		table.setModel(modelo);
-		
+
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(null);
@@ -83,7 +88,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				modelo = T.ShowPacientesByNombre(textField.getText());
+				modelo = T.FilterTable(textField.getText(),"Doctores","Nombres");
 				table.setModel(modelo);
 			}
 			@Override
@@ -132,7 +137,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 		PictureAzul.setBounds(62, 4, 32, 34);
 		UpdatePanel.add(PictureAzul);
 		
-		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, PictureAzul);
+		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, blanco,azul);
 		
 		JPanel DeletePanel = new JPanel();
 		DeletePanel.addMouseListener(new MouseAdapter() {
@@ -163,7 +168,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 		PictureDeAzul.setBounds(61, 3, 32, 34);
 		DeletePanel.add(PictureDeAzul);
 		
-		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, PictureDeAzul);
+		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, blanco,azul);
 		
 		 addWindowListener((WindowListener) new WindowAdapter() {
 	            @Override
@@ -190,7 +195,11 @@ public class DoctorsShow extends JFrame implements Ventana {
 	    }
 	 
 	 void delete() {
-		
+		 int selectedrow = table.getSelectedRow();
+			if(selectedrow >= 0 && selectedrow < modelo.getRowCount()) {
+				int id = (int) modelo.getValueAt(selectedrow, 0);
+				T.EliminarDatos(id,"Doctores","DoctorID");
+				modelo.removeRow(selectedrow);}
 	 }
 	 
 	 void update() {
