@@ -52,7 +52,6 @@ public class Tools {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return modelo;
 		}
 	

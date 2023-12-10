@@ -93,7 +93,8 @@ public class RegisterDoctor extends JPanel {
 			// Evento de Save: 
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int comboBox_ID = comboBx_Especialidad.getSelectedIndex() + 1;
+
 				if (Nametxt.getText().isEmpty()|| LastNametxt.getText().isEmpty()|| Emailtxt.getText().isEmpty()
 					|| Phonetxt.getText().isEmpty()|| comboBx_Especialidad.getSelectedItem()==null) {
 					
@@ -108,14 +109,13 @@ public class RegisterDoctor extends JPanel {
 								JOptionPane.showMessageDialog(null, mensaje);
 							}
 							else {
-								String comboBox_Item = (String)comboBx_Especialidad.getSelectedItem();
 									try {				
 										Statement sql2 = Conexion.EstablecerConexion().createStatement();
-										String consulta2 = "Insert into Doctores (Nombres,Apellido,Especialidad,Email,Telefono)values("
+										String consulta2 = "Insert into Doctores (Nombres,Apellido,EspecialidadID,Email,Telefono)values("
 										
 											+ "'" + Nametxt.getText()+"'," 	
 											+ "'" + LastNametxt.getText()+"',"
-											+ "'" + comboBox_Item + "',"
+											+ "'" + comboBox_ID + "',"
 											+ "'" + Emailtxt.getText()+ "',"
 											+ "'" + Phonetxt.getText() + "');";			
 										
@@ -161,11 +161,10 @@ public class RegisterDoctor extends JPanel {
 				JScrollPane scrollPane = new JScrollPane((Component) null);
 				scrollPane.setBounds(10, 11, 441, 130);
 				panelTable.add(scrollPane);
-						
+					//Evento de show	
 		btnShow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
 				DoctorsShow D = new DoctorsShow(instanciaJMenuAdmin);
 				D.ShowVentana();
@@ -178,12 +177,15 @@ public class RegisterDoctor extends JPanel {
 					
 					// Esto es para la tabla de Preview inmediato
 					int columnas = Datos_Doc.getMetaData().getColumnCount();
+					
+					String Especialidad_Item = (String)comboBx_Especialidad.getSelectedItem();
+					
 					for (int i = 1; i < columnas; i++ ) {
 							modelo.addColumn(Datos_Doc.getMetaData().getColumnName(i));
 						}
 					while (Datos_Doc.next()) {
-						Object[] nuevaFila = {Nametxt.getText(), LastNametxt.getText(), Emailtxt.getText(), Phonetxt.getText()};
-
+						Object[] nuevaFila = {Nametxt.getText(), LastNametxt.getText(), Especialidad_Item,
+								Emailtxt.getText(), Phonetxt.getText()};
 						modelo.addRow(nuevaFila);
 						modelo.fireTableDataChanged();
 						t.LimpiarCampos(Nametxt,LastNametxt,Emailtxt,Phonetxt);
@@ -205,6 +207,14 @@ public class RegisterDoctor extends JPanel {
 		btnUpdate.setBackground(new Color(7, 43, 95));
 		btnUpdate.setBounds(10, 96, 203, 34);
 		panelbotones.add(btnUpdate);
+		
+		btnUpdate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+			}
+		});
 		
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\delete.png"));

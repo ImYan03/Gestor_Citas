@@ -228,7 +228,7 @@ public class JSign implements Ventana {
 				String p = new String(psUser.getPassword());
 				Usuarios User = new Usuarios(Usertxt.getText(), txtEmail.getText(), p);
 				try {
-					String query= "SELECT * FROM usuario WHERE Username ='" + User.getNombre() + "' and Email = '"+User.getCorreo()+"'";
+					String query= "SELECT * FROM Usuarios WHERE Nombre ='" + User.getNombre() + "' and Correo = '"+User.getCorreo()+"'";
 					Statement sql = Conexion.EstablecerConexion().createStatement();
 					ResultSet resultado = sql.executeQuery(query);
 					
@@ -236,16 +236,17 @@ public class JSign implements Ventana {
 						String mensaje = "Ya esta registrada una cuenta con estos datos";
 						JOptionPane.showMessageDialog(null, mensaje);
 						
-					}else {
-						
+					}else {						
 						try {
-							Statement sql2 = Conexion.EstablecerConexion().createStatement();
-							String query2 = "INSERT INTO Usuario(Username, Passwords, Email, TipoCuenta) VALUES ("
+							String query2 = "INSERT INTO Usuarios(Nombre,Correo, Contraseña) VALUES ("
 									+ "'"+User.getNombre()+"',"
-									+ "'"+User.getContraseña()+"',"
 									+ "'"+User.getCorreo()+"',"
-									+"'Usuario'"
+									+ "'"+User.getContraseña()+"',"
+									+"'Usuarios'"
 									+ ");";
+							Statement sql2 = Conexion.EstablecerConexion().createStatement();
+
+							
 							sql2.executeUpdate(query2);
 							sql2.close();
 							Conexion.EstablecerConexion().close();
