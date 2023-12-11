@@ -277,31 +277,33 @@ public class Pacientes extends JPanel {
 				
 				int selectedrow = table.getSelectedRow();
 				
-				Object IdObj = modelo.getValueAt(selectedrow, 0);
-			    int Id = -1;
-			    if (IdObj instanceof Integer) {
-			        Id = (Integer) IdObj;
-			    }
+				if(selectedrow >=0) {
+					Object IdObj = modelo.getValueAt(selectedrow, 0);
+				    int Id = -1;
+				    if (IdObj instanceof Integer) {
+				        Id = (Integer) IdObj;
+				    }
 
-			    Name = (String) modelo.getValueAt(selectedrow, 1);
-			    Proname = (String) modelo.getValueAt(selectedrow, 2);
-			    Email = (String) modelo.getValueAt(selectedrow, 3);
-			    Object phoneObj = modelo.getValueAt(selectedrow, 4);
-			    Phone = phoneObj != null ? phoneObj.toString() : "";
-			    Date = (String) modelo.getValueAt(selectedrow, 5);
-			    Object IDObj = modelo.getValueAt(selectedrow, 6);
-			    ID = IDObj != null ? IDObj.toString() : "";
-			    PacientesEdit edit = new PacientesEdit();
-				edit.setName(Name);
-				edit.setProname(Proname);
-				edit.setEmail(Email);
-				edit.setPhone(Phone);
-				edit.setDate(Date);
-				edit.setID(ID);
-				edit.setid(Id);
-				edit.ShowVentana();	
-				edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
-			}
+				    Name = (String) modelo.getValueAt(selectedrow, 1);
+				    Proname = (String) modelo.getValueAt(selectedrow, 2);
+				    Email = (String) modelo.getValueAt(selectedrow, 3);
+				    Object phoneObj = modelo.getValueAt(selectedrow, 4);
+				    Phone = phoneObj != null ? phoneObj.toString() : "";
+				    Date = (String) modelo.getValueAt(selectedrow, 5);
+				    Object IDObj = modelo.getValueAt(selectedrow, 6);
+				    ID = IDObj != null ? IDObj.toString() : "";
+				    PacientesEdit edit = new PacientesEdit();
+					edit.setName(Name);
+					edit.setProname(Proname);
+					edit.setEmail(Email);
+					edit.setPhone(Phone);
+					edit.setDate(Date);
+					edit.setID(ID);
+					edit.setid(Id);
+					edit.ShowVentana();	
+					edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
+				}
+							}
 		});
 		btnUpdate.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\edit2.png"));
 		btnUpdate.setBackground(new Color(7, 43, 95));

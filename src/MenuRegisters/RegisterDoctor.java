@@ -209,31 +209,32 @@ public class RegisterDoctor extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				int selectedrow = DoctorTable.getSelectedRow();
-				
-				Object IdObj = (modelo.getValueAt(selectedrow, 0));
-			    int Id = 0;
-			    if (IdObj instanceof Integer) {
-			        Id = (Integer) IdObj;
-			    }
-			    
-					Nombre = (String) modelo.getValueAt(selectedrow, 1);
-				    Apellido = (String) modelo.getValueAt(selectedrow, 2);
-				    String Especialidad = (String)comboBx_Especialidad.getSelectedItem();
-				    Email = (String) modelo.getValueAt(selectedrow, 4);
-				    Object phoneObj = modelo.getValueAt(selectedrow, 5);
-				    Phone = phoneObj != null ? phoneObj.toString() : "";
-				    
-				    DoctorEdit edit = new DoctorEdit();
-					edit.setName(Nombre);
-					edit.setProname(Apellido);
-					edit.setEspecialidad(Especialidad);
-					edit.setEmail(Email);
-					edit.setPhone(Phone);
-					edit.setid(Id);
-					edit.ShowVentana();	
-					edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
-				
+				if (selectedrow >=0) {
+					
+					Object IdObj = (modelo.getValueAt(selectedrow, 0));
+				    int Id = 0;
+				    if (IdObj instanceof Integer) {
+				        Id = (Integer) IdObj;
+				    }  
+						Nombre = (String) modelo.getValueAt(selectedrow, 1);
+					    Apellido = (String) modelo.getValueAt(selectedrow, 2);
+					    String Especialidad = (String)comboBx_Especialidad.getSelectedItem();
+					    Email = (String) modelo.getValueAt(selectedrow, 4);
+					    Object phoneObj = modelo.getValueAt(selectedrow, 5);
+					    Phone = phoneObj != null ? phoneObj.toString() : "";
+					    
+					    DoctorEdit edit = new DoctorEdit();
+						edit.setName(Nombre);
+						edit.setProname(Apellido);
+						edit.setEspecialidad(Especialidad);
+						edit.setEmail(Email);
+						edit.setPhone(Phone);
+						edit.setid(Id);
+						edit.ShowVentana();	
+						edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
+				}
 			}
 		});
 				
