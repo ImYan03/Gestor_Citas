@@ -42,10 +42,11 @@ public class RegisterDoctor extends JPanel {
 	private JTextField Phonetxt;
 	@SuppressWarnings("unused")
 	private JComboBox<?> comboBx_Especialidad;
+	
 	private JPanel panelDoctor,panelTable;
 	Tools t = new Tools();
 	private JMenuAdmin instanciaJMenuAdmin;
-	private String Nombre,Apellido,Especialidad,Email,Phone;
+	private String ID,Nombre,Apellido,Especialidad,Email,Phone;
 	DefaultTableModel modelo = t.MostrarTabla("Doctores");
 	/**
 	 * Create the panel.
@@ -209,22 +210,30 @@ public class RegisterDoctor extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int selectedrow = DoctorTable.getSelectedRow();
-
-				if (selectedrow >= 0) {
-					Nombre = (String) modelo.getValueAt(selectedrow, 0);
-				    Apellido = (String) modelo.getValueAt(selectedrow, 1);
-				    Especialidad = (String) modelo.getValueAt(selectedrow, 2);
-				    Email = (String) modelo.getValueAt(selectedrow, 3);
-				    Object phoneObj = modelo.getValueAt(selectedrow, 4);
+				
+				Object IdObj = (modelo.getValueAt(selectedrow, 0));
+			    int Id = 0;
+			    if (IdObj instanceof Integer) {
+			        Id = (Integer) IdObj;
+			    }
+			    
+					Nombre = (String) modelo.getValueAt(selectedrow, 1);
+				    Apellido = (String) modelo.getValueAt(selectedrow, 2);
+				    String Especialidad = (String)comboBx_Especialidad.getSelectedItem();
+				    Email = (String) modelo.getValueAt(selectedrow, 4);
+				    Object phoneObj = modelo.getValueAt(selectedrow, 5);
 				    Phone = phoneObj != null ? phoneObj.toString() : "";
+				    
 				    DoctorEdit edit = new DoctorEdit();
 					edit.setName(Nombre);
 					edit.setProname(Apellido);
+					edit.setEspecialidad(Especialidad);
 					edit.setEmail(Email);
 					edit.setPhone(Phone);
+					edit.setid(Id);
 					edit.ShowVentana();	
 					edit.setInstanciaJMenuAdmin(instanciaJMenuAdmin);
-				}
+				
 			}
 		});
 				
@@ -362,6 +371,11 @@ public class RegisterDoctor extends JPanel {
 		panelDoctor.add(Phonetxt);
 		
 		panelDoctor.add(comboBx_Especialidad);
+		
+		
 	}
+		public JComboBox<?> getComboBox() {
+			return comboBx_Especialidad;
+		}
 
 }

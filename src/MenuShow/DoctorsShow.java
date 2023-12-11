@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import MenuAdmin.JMenuAdmin;
 import MenuRegisters.RegisterDoctor;
+import MenuUpdates.DoctorEdit;
 import ToolsMethods.Tools;
 import ToolsMethods.Ventana;
 
@@ -37,7 +38,6 @@ public class DoctorsShow extends JFrame implements Ventana {
 	@SuppressWarnings("unused")
 	private JMenuAdmin instancia; 	
 	DefaultTableModel modelo = T.MostrarTabla("Doctores");
-
 	Color azul = new Color(10, 59, 129);
 	Color blanco = new Color(255, 255, 255);
 	
@@ -203,7 +203,30 @@ public class DoctorsShow extends JFrame implements Ventana {
 	 }
 	 
 	 void update() {
-	
+		 int selectedrow = table.getSelectedRow();
+			
+			Object IdObj = (modelo.getValueAt(selectedrow, 0));
+		    int Id = 0;
+		    if (IdObj instanceof Integer) {
+		        Id = (Integer) IdObj;
+		    }
+		    
+				Name = (String) modelo.getValueAt(selectedrow, 1);
+			    Proname = (String) modelo.getValueAt(selectedrow, 2);
+			    String Especialidad = (String)Doctor.getComboBox().getSelectedItem();
+			    Email = (String) modelo.getValueAt(selectedrow, 4);
+			    Object phoneObj = modelo.getValueAt(selectedrow, 5);
+			    Phone = phoneObj != null ? phoneObj.toString() : "";
+			    
+			    DoctorEdit edit = new DoctorEdit();
+				edit.setName(Name);
+				edit.setProname(Proname);
+				edit.setEspecialidad(Especialidad);
+				edit.setEmail(Email);
+				edit.setPhone(Phone);
+				edit.setid(Id);
+				edit.ShowVentana();	
+				edit.setInstanciaJMenuAdmin(instancia);
 	 }
 	 
 	}

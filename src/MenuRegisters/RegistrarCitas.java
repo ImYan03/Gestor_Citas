@@ -82,6 +82,10 @@ public class RegistrarCitas extends JPanel {
 		FechaTxt.setBounds(11, 128, 205, 23);
 		panelpacientes.add(FechaTxt);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 180, 209, 22);
+		panelpacientes.add(comboBox);
+		
 		JPanel panelbotones = new JPanel();
 		panelbotones.setLayout(null);
 		panelbotones.setBackground(new Color(251, 251, 251));

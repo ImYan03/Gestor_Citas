@@ -25,7 +25,7 @@ public class Tools {
 	public Tools() {
 		// TODO Auto-generated constructor stub
 	}
-
+		int id2;
 	public DefaultTableModel MostrarTabla(String Tabla) {
 		
 		DefaultTableModel modelo = new DefaultTableModel(); // crear modelo de la tabla
@@ -61,9 +61,9 @@ public class Tools {
 	
 	
 	
-	public void ActualizarDatos(String NombreTabla, int id, String column, String nuevodato,String WhereColumn ) {
+	public void ActualizarDatos(String NombreTabla, int id, String column, Object object,String WhereColumn ) {
 		 try {
-			 String consulta = "UPDATE " +  NombreTabla + " SET "+ column +" = " + "'" + nuevodato +"'" + " Where "+ WhereColumn +" = " + id;
+			 String consulta = "UPDATE " +  NombreTabla + " SET "+ column +" = " + "'" + object +"'" + " Where "+ WhereColumn +" = " + id;
 			 Statement sql = Conexion.EstablecerConexion().createStatement();
 			 sql.executeUpdate(consulta);
 			 
@@ -79,6 +79,20 @@ public class Tools {
 	public void ActualizarDatos(int id, String column, int nuevodato, String NombreTabla, String WhereColumn) {
 		 try {
 			 String consulta = "UPDATE "+ NombreTabla +" SET "+ column +" = " + "'" +nuevodato+"'" + " Where "+WhereColumn +" PacienteID = " + id;
+			 Statement sql = Conexion.EstablecerConexion().createStatement();
+			 sql.executeUpdate(consulta);
+			 
+			 sql.close();
+			 Conexion.EstablecerConexion().close();
+			 
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }
+	}
+	//Sobrecarga para el comboBox
+	public void ActualizarDatos(String NombreTabla, int id, String column, String Especialidad,String WhereColumn ) {
+		 try {
+			 String consulta = "UPDATE " +  NombreTabla + " SET "+ column +" = " + "'" + Especialidad+"'" + " Where "+ WhereColumn +" = '" + id + "'";
 			 Statement sql = Conexion.EstablecerConexion().createStatement();
 			 sql.executeUpdate(consulta);
 			 
@@ -242,7 +256,6 @@ public class Tools {
 			Email.setText(null);
 			Phone.setText(null);
 		}
-	
 }
 	
 
