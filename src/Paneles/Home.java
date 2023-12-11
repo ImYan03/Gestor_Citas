@@ -106,7 +106,11 @@ public class Home extends JPanel {
 		NumClient.setForeground(Color.WHITE);
 		NumClient.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 33));
 		NumClient.setBounds(162, 9, 75, 43);
+<<<<<<< HEAD
 		T.GetData(NumClient, "Pacientes");
+=======
+		T.GetCantClients(NumClient);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		panel.add(NumClient);
 		
 		JSeparator separator = new JSeparator();

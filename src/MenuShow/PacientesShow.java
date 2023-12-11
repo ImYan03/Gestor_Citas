@@ -35,9 +35,13 @@ public class PacientesShow extends JFrame implements Ventana {
 	String Name,Proname,Email,Phone,Date,ID;
 	@SuppressWarnings("unused")
 	private JMenuAdmin instanciaJMenuAdmin; 	
+<<<<<<< HEAD
 	DefaultTableModel modelo = T.MostrarTabla("Pacientes");
 	Color azul = new Color(10, 59, 129);
 	Color blanco = new Color(255, 255, 255);
+=======
+	DefaultTableModel modelo = T.MostrarTablaPacientes();
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 
 	/**
 	 * Create the frame.
@@ -84,7 +88,11 @@ public class PacientesShow extends JFrame implements Ventana {
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
+<<<<<<< HEAD
 				modelo = T.FilterTable(textField.getText(),"Pacientes","Nombre");
+=======
+				modelo = T.ShowPacientesByNombre(textField.getText());
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 				table.setModel(modelo);
 			}
 			@Override
@@ -133,7 +141,11 @@ public class PacientesShow extends JFrame implements Ventana {
 		PictureAzul.setBounds(62, 4, 32, 34);
 		UpdatePanel.add(PictureAzul);
 		
+<<<<<<< HEAD
 		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, blanco, azul);
+=======
+		T.pintarPanelYLabel(UpdatePanel, lblNewLabel_1, PictureUp, PictureAzul);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		
 		JPanel DeletePanel = new JPanel();
 		DeletePanel.addMouseListener(new MouseAdapter() {
@@ -164,7 +176,11 @@ public class PacientesShow extends JFrame implements Ventana {
 		PictureDeAzul.setBounds(61, 3, 32, 34);
 		DeletePanel.add(PictureDeAzul);
 		
+<<<<<<< HEAD
 		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, blanco, azul);
+=======
+		T.pintarPanelYLabel(DeletePanel, lblNewLabel_1_1, PictureDe, PictureDeAzul);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		
 		 addWindowListener((WindowListener) new WindowAdapter() {
 	            @Override
@@ -194,7 +210,11 @@ public class PacientesShow extends JFrame implements Ventana {
 			int selectedrow = table.getSelectedRow();
 			if(selectedrow >= 0 && selectedrow < modelo.getRowCount()) {
 				int id = (int) modelo.getValueAt(selectedrow, 0);
+<<<<<<< HEAD
 				T.EliminarDatos(id,"Pacientes", "PacientesID");
+=======
+				T.EliminarDatosPacientes(id);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 				modelo.removeRow(selectedrow);
 			}
 	 }

@@ -228,7 +228,11 @@ public class JSign implements Ventana {
 				String p = new String(psUser.getPassword());
 				Usuarios User = new Usuarios(Usertxt.getText(), txtEmail.getText(), p);
 				try {
+<<<<<<< HEAD
 					String query = "SELECT * FROM Usuarios WHERE Nombre = '" + User.getNombre() + "' AND Correo = '" + User.getCorreo() + "'";
+=======
+					String query= "SELECT * FROM usuario WHERE Username ='" + User.getNombre() + "' and Email = '"+User.getCorreo()+"'";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 					Statement sql = Conexion.EstablecerConexion().createStatement();
 					ResultSet resultado = sql.executeQuery(query);
 					
@@ -240,11 +244,20 @@ public class JSign implements Ventana {
 						
 						try {
 							Statement sql2 = Conexion.EstablecerConexion().createStatement();
+<<<<<<< HEAD
 							String query2 = "INSERT INTO Usuarios(Nombre, Contraseña, Correo) VALUES ("
 					                + "'" + User.getNombre() + "',"
 					                + "'" + User.getContraseña() + "',"
 					                + "'" + User.getCorreo() + "'"
 					                + ")";
+=======
+							String query2 = "INSERT INTO Usuario(Username, Passwords, Email, TipoCuenta) VALUES ("
+									+ "'"+User.getNombre()+"',"
+									+ "'"+User.getContraseña()+"',"
+									+ "'"+User.getCorreo()+"',"
+									+"'Usuario'"
+									+ ");";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 							sql2.executeUpdate(query2);
 							sql2.close();
 							Conexion.EstablecerConexion().close();

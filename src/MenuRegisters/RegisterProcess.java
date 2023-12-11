@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+<<<<<<< HEAD
 import javax.swing.table.DefaultTableModel;
 
 import ToolsMethods.Tools;
@@ -23,15 +24,24 @@ import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+=======
+import javax.swing.JTextPane;
+import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 
 public class RegisterProcess extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTable table;
+<<<<<<< HEAD
 	private JTextField NameTxt;
 	Tools T = new Tools();
 	DefaultTableModel modelo = T.MostrarTabla("Procedimientos");
 	
+=======
+	private JTextField textField;
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 	/**
 	 * Create the panel.
 	 */
@@ -57,6 +67,7 @@ public class RegisterProcess extends JPanel {
 		panelbotones.add(separadorbotones);
 		
 		JButton btnSave = new JButton("Save");
+<<<<<<< HEAD
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -65,6 +76,8 @@ public class RegisterProcess extends JPanel {
 				
 			}
 		});
+=======
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		btnSave.setIcon(new ImageIcon("C:\\Users\\jeanc\\OneDrive\\Documentos\\ITLA CLASES\\[3] TERCER CUATRIMESTRE\\PROGRAMACION 1\\PROYECTOS\\Gestor_Citas\\imagenes\\diskette.png"));
 		btnSave.setForeground(Color.WHITE);
 		btnSave.setFont(new Font("Segoe UI", Font.BOLD, 11));
@@ -161,12 +174,21 @@ public class RegisterProcess extends JPanel {
 		lblname.setBounds(10, 22, 131, 14);
 		panelpacientes.add(lblname);
 		
+<<<<<<< HEAD
 		NameTxt = new JTextField();
 		NameTxt.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		NameTxt.setColumns(10);
 		NameTxt.setBackground(UIManager.getColor("Button.background"));
 		NameTxt.setBounds(10, 40, 208, 20);
 		panelpacientes.add(NameTxt);
+=======
+		textField = new JTextField();
+		textField.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		textField.setColumns(10);
+		textField.setBackground(UIManager.getColor("Button.background"));
+		textField.setBounds(10, 40, 208, 20);
+		panelpacientes.add(textField);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		
 		JLabel lblphone = new JLabel("Specialty");
 		lblphone.setForeground(new Color(5, 30, 67));
@@ -180,6 +202,7 @@ public class RegisterProcess extends JPanel {
 		lblemail.setBounds(9, 111, 125, 14);
 		panelpacientes.add(lblemail);
 		
+<<<<<<< HEAD
 		JComboBox<Object> EspecialidadCmb = new JComboBox<Object>();
 		T.CmbSpecialty(EspecialidadCmb, "Especialidad", "Nombre");
 		EspecialidadCmb.setFocusable(false);
@@ -194,5 +217,20 @@ public class RegisterProcess extends JPanel {
 		DescriptionTxt.setBackground(new Color(240, 240, 240));
 		DescriptionTxt.setBounds(10, 129, 208, 70);
 		panelpacientes.add(DescriptionTxt);
+=======
+		JComboBox<?> comboBox = new JComboBox<Object>();
+		comboBox.setFocusable(false);
+		comboBox.setFocusTraversalKeysEnabled(false);
+		comboBox.setLightWeightPopupEnabled(false);
+		comboBox.setBackground(new Color(240, 240, 240));
+		comboBox.setBounds(11, 83, 206, 22);
+		panelpacientes.add(comboBox);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBorder(new LineBorder(new Color(192, 192, 192)));
+		textPane.setBackground(new Color(240, 240, 240));
+		textPane.setBounds(10, 129, 208, 70);
+		panelpacientes.add(textPane);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 	}
 }

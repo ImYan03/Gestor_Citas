@@ -165,7 +165,11 @@ public class JLogin implements Ventana{
 				String Password= new String(PsTxt.getPassword());
 				
 				try {
+<<<<<<< HEAD
 					String query = "SELECT * FROM Usuarios WHERE nombre = ? AND contraseña = ?";
+=======
+					String query = "SELECT * FROM Usuario WHERE Username = ? AND Passwords = ?";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 					PreparedStatement statement = Conexion.EstablecerConexion().prepareStatement(query);
 					statement.setString(1, Username);
 			        statement.setString(2, Password);

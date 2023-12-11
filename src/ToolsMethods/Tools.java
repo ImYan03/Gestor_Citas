@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
+<<<<<<< HEAD
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -17,6 +18,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+=======
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 import javax.swing.table.DefaultTableModel;
 import ConexionBD.Conexion;
 
@@ -25,6 +33,7 @@ public class Tools {
 	public Tools() {
 		// TODO Auto-generated constructor stub
 	}
+<<<<<<< HEAD
 		int id2;
 	public DefaultTableModel MostrarTabla(String Tabla) {
 		
@@ -49,6 +58,28 @@ public class Tools {
 						fila[i-1] = tabla.getObject(i); //agregar las filas al vector
 					}
 					modelo.addRow(fila); //añadir el vector al modelo
+=======
+
+	public DefaultTableModel MostrarTablaPacientes() {
+			
+		DefaultTableModel modelo = new DefaultTableModel();
+			try {
+				
+				String consulta = "select * from Pacientes";
+				Statement sql = Conexion.EstablecerConexion().createStatement();
+				ResultSet tabla = sql.executeQuery(consulta);
+				int columnas = tabla.getMetaData().getColumnCount();
+				for(int i = 1; i<=columnas; i++) {
+					modelo.addColumn(tabla.getMetaData().getColumnName(i));
+				}
+				
+				while (tabla.next()) {
+					Object[] fila = new Object[columnas];
+					for(int i = 1; i<=columnas; i++) {
+						fila[i-1] = tabla.getObject(i);
+					}
+					modelo.addRow(fila);
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 				}
 				
 			} catch (SQLException e) {
@@ -59,6 +90,7 @@ public class Tools {
 			return modelo;
 		}
 	
+<<<<<<< HEAD
 	
 	
 	public void ActualizarDatos(String NombreTabla, int id, String column, Object object,String WhereColumn ) {
@@ -107,6 +139,63 @@ public class Tools {
 	public void EliminarDatos(int id, String Tabla, String Columna) {
 		try {
 			String consulta = "DELETE FROM "+ Tabla +" Where "+ Columna +" = " + id + ";";
+=======
+	public void MostrarTablaUsuarios(DefaultTableModel modelo) {
+		try {
+			String consulta = "Select * From Usuario;";
+			Statement sql = Conexion.EstablecerConexion().createStatement();
+			ResultSet tabla = sql.executeQuery(consulta);
+			int columnas = tabla.getMetaData().getColumnCount();
+			for(int i = 1; i<=columnas; i++) {
+				modelo.addColumn(tabla.getMetaData().getColumnName(i));
+			}
+			
+			while (tabla.next()) {
+				Object[] fila = new Object[columnas];
+				for(int i = 1; i<=columnas; i++) {
+					fila[i-1] = tabla.getObject(i);
+				}
+				modelo.addRow(fila);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void ActualizarDatosPacientes(int id, String column, String nuevodato ) {
+		 try {
+			 String consulta = "UPDATE Pacientes SET "+ column +" = " + "'" +nuevodato+"'" + " Where PacienteID = " + id;
+			 Statement sql = Conexion.EstablecerConexion().createStatement();
+			 sql.executeUpdate(consulta);
+			 
+			 sql.close();
+			 Conexion.EstablecerConexion().close();
+			 
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }
+	}
+	
+	public void ActualizarDatosPacientes(int id, String column, int nuevodato ) {
+		 try {
+			 String consulta = "UPDATE Pacientes SET "+ column +" = " + "'" +nuevodato+"'" + " Where PacienteID = " + id;
+			 Statement sql = Conexion.EstablecerConexion().createStatement();
+			 sql.executeUpdate(consulta);
+			 
+			 sql.close();
+			 Conexion.EstablecerConexion().close();
+			 
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }
+	}
+	
+	public void EliminarDatosPacientes(int id) {
+		try {
+			String consulta = "DELETE FROM Pacientes Where PacienteID = " + id + ";";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 			Statement sql = Conexion.EstablecerConexion().createStatement();
 			sql.executeUpdate(consulta);
 			
@@ -118,6 +207,7 @@ public class Tools {
 			}
 	}
 	
+<<<<<<< HEAD
 	public DefaultTableModel FilterTable( String nombre, String Tabla, String Columna) {
 		
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -128,6 +218,16 @@ public class Tools {
 			
 			int columnas = tabla.getMetaData().getColumnCount();
 			
+=======
+	public DefaultTableModel ShowPacientesByNombre( String nombre) {
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		try {
+			String consulta = "SELECT * FROM Pacientes WHERE Nombre LIKE '%" + nombre + "%';";
+			Statement sql = Conexion.EstablecerConexion().createStatement();
+			ResultSet tabla = sql.executeQuery(consulta);
+			int columnas = tabla.getMetaData().getColumnCount();
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 			for(int i = 1; i<=columnas; i++) {
 				modelo.addColumn(tabla.getMetaData().getColumnName(i));
 			}
@@ -164,11 +264,27 @@ public class Tools {
 		});
 	}
 	
+<<<<<<< HEAD
 	public void pintarPanelYLabel(JPanel panel, JLabel label, JLabel Img, Color color1, Color color2) {
+=======
+	public void CambiarImagen(JPanel panel, JLabel Img, JLabel ImgChanged) {
+		Color color = new Color(245,245,245);
+		if(panel.getBackground().equals(color)) {
+			Img.setVisible(false);
+			ImgChanged.setVisible(true);
+		}else {
+			Img.setVisible(true);
+			ImgChanged.setVisible(false);
+		}
+	}
+	
+	public void pintarPanelYLabel(JPanel panel, JLabel label, JLabel Img, JLabel ImgChanged) {
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
+<<<<<<< HEAD
 				panel.setBackground(color1);
 				label.setForeground(color2);
 				Img.setVisible(false);
@@ -183,6 +299,23 @@ public class Tools {
 	}	
 	public void GetData(JLabel lbl, String Table) {
 		String consulta = "SELECT COUNT(*) AS Total FROM "+ Table +";";
+=======
+				panel.setBackground(new Color(245,245,245));
+				label.setForeground(new Color(7, 43, 95));
+				CambiarImagen(panel, Img, ImgChanged);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel.setBackground(new Color(10, 59, 129));
+				label.setForeground(new Color(255,255,255));
+				CambiarImagen(panel, Img, ImgChanged);
+			}
+		});
+	}
+	
+	public void GetCantClients(JLabel lbl) {
+		String consulta = "SELECT COUNT(*) AS Total FROM Pacientes;";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 		try {
 			Statement sql = Conexion.EstablecerConexion().createStatement();
 			ResultSet result = sql.executeQuery(consulta);
@@ -216,7 +349,11 @@ public class Tools {
 	                if(hora>=12) {
 	                	Tiempo = "PM";
 	                }else {
+<<<<<<< HEAD
 	                	Tiempo = "AM";
+=======
+	                	Tiempo = "AMito";
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 	                }
 	                
 	                lbl.setText(String.format("%02d:%02d ", hora, minutos) + Tiempo);
@@ -225,6 +362,7 @@ public class Tools {
 
 	        timer.schedule(actualizarHora, 0, 1000);
 	    }
+<<<<<<< HEAD
 	
 	
 	public void CmbSpecialty(JComboBox<Object> cmb, String Tabla, String Columna) {
@@ -256,8 +394,15 @@ public class Tools {
 			Email.setText(null);
 			Phone.setText(null);
 		}
+=======
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
 }
 	
 
 
+<<<<<<< HEAD
 	
+=======
+	
+
+>>>>>>> c98c74815a353642cf1fb6126b8bb41d88be4a2e
