@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,7 +43,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 	Color blanco = new Color(255, 255, 255);
 	
 	RegisterDoctor Doctor = new RegisterDoctor(instancia);
-
+	JComboBox ComboBox = new JComboBox();
 	/**
 	 * Create the frame.
 	 */
@@ -213,7 +214,7 @@ public class DoctorsShow extends JFrame implements Ventana {
 		    
 				Name = (String) modelo.getValueAt(selectedrow, 1);
 			    Proname = (String) modelo.getValueAt(selectedrow, 2);
-			    String Especialidad = (String)Doctor.getComboBox().getSelectedItem();
+			    String Especialidad = (String)ComboBox.getSelectedItem();
 			    Email = (String) modelo.getValueAt(selectedrow, 4);
 			    Object phoneObj = modelo.getValueAt(selectedrow, 5);
 			    Phone = phoneObj != null ? phoneObj.toString() : "";
